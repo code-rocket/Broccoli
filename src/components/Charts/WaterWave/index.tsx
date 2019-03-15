@@ -19,13 +19,13 @@ class WaterWave extends React.Component<WaterWaveProps, WaterWareState> {
   private timer: number;
 
   static defaultProps = {
-    color: '#1890FF'
+    color: '#1890FF',
   };
 
   constructor(props) {
     super(props);
     this.state = {
-      radio: 1
+      radio: 1,
     };
   }
 
@@ -63,7 +63,7 @@ class WaterWave extends React.Component<WaterWaveProps, WaterWareState> {
       const { height } = this.props;
       const { offsetWidth } = this.root.parentNode;
       this.setState({
-        radio: offsetWidth < height ? offsetWidth / height : 1
+        radio: offsetWidth < height ? offsetWidth / height : 1,
       });
     }
   };
@@ -103,11 +103,7 @@ class WaterWave extends React.Component<WaterWaveProps, WaterWareState> {
     const circleOffset = -(Math.PI / 2);
     let circleLock = true;
 
-    for (
-      let i = circleOffset;
-      i < circleOffset + 2 * Math.PI;
-      i += 1 / (8 * Math.PI)
-    ) {
+    for (let i = circleOffset; i < circleOffset + 2 * Math.PI; i += 1 / (8 * Math.PI)) {
       arcStack.push([radius + bR * Math.cos(i), radius + bR * Math.sin(i)]);
     }
 
@@ -213,19 +209,19 @@ class WaterWave extends React.Component<WaterWaveProps, WaterWareState> {
     return (
       <div
         className={styles.waterWave}
-        ref={(n) => (this.root = n)}
+        ref={n => (this.root = n)}
         style={{ transform: `scale(${radio})` }}
       >
         <div
           style={{
             width: height,
             height,
-            overflow: 'hidden'
+            overflow: 'hidden',
           }}
         >
           <canvas
             className={styles.waterWaveCanvasWrapper}
-            ref={(n) => (this.node = n)}
+            ref={n => (this.node = n)}
             width={height * 2}
             height={height * 2}
           />

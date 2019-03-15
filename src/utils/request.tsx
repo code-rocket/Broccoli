@@ -40,7 +40,7 @@ function responseSuccess(response) {
   response.data = {
     data,
     code: status,
-    message
+    message,
   };
 
   return response.data;
@@ -62,10 +62,10 @@ axios.interceptors.response.use(responseSuccess, responseFail);
  */
 export const request = (config: AxiosRequestConfig) => {
   return axios(config)
-    .then((response) => {
+    .then(response => {
       return response;
     })
-    .catch((error) => {
+    .catch(error => {
       if (!error.response) {
         return console.log('Error', error.message);
       }
@@ -77,67 +77,48 @@ export const request = (config: AxiosRequestConfig) => {
       }
 
       // 开发调试
-      console.log(
-        `【${config.method} ${config.url}】请求失败，响应数据：%o`,
-        error.response
-      );
+      console.log(`【${config.method} ${config.url}】请求失败，响应数据：%o`, error.response);
 
       return { code: status, message: '' };
     });
 };
 
-export const GET = (
-  url: string,
-  params?: object,
-  config?: AxiosRequestConfig
-) => {
+export const GET = (url: string, params?: object, config?: AxiosRequestConfig) => {
   return request(
     Object.assign({}, config, {
       url: url,
       params: params,
-      method: 'get'
+      method: 'get',
     })
   );
 };
 
-export const POST = (
-  url: string,
-  data?: object,
-  config?: AxiosRequestConfig
-) => {
+export const POST = (url: string, data?: object, config?: AxiosRequestConfig) => {
   return request(
     Object.assign({}, config, {
       url: url,
       data: data,
-      method: 'post'
+      method: 'post',
     })
   );
 };
 
-export const PUT = (
-  url: string,
-  data?: object,
-  config?: AxiosRequestConfig
-) => {
+export const PUT = (url: string, data?: object, config?: AxiosRequestConfig) => {
   return request(
     Object.assign({}, config, {
       url: url,
       data: data,
-      method: 'put'
+      method: 'put',
     })
   );
 };
 
-export const DELETE = (
-  url: string,
-  data?: object,
-  config?: AxiosRequestConfig
-) => {
+export const DELETE = (url: string, data?: object, config?: AxiosRequestConfig) => {
   return request(
     Object.assign({}, config, {
       url: url,
       data: data,
-      method: 'delete'
+      method: 'delete',
     })
   );
 };

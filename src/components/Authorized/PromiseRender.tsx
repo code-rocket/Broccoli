@@ -13,7 +13,7 @@ interface State {
 
 class PromiseRender extends React.PureComponent<IPromiseRenderProps, State> {
   readonly state: State = {
-    component: null
+    component: null,
   };
 
   componentDidMount() {
@@ -32,17 +32,17 @@ class PromiseRender extends React.PureComponent<IPromiseRenderProps, State> {
     props.promise
       .then(() => {
         this.setState({
-          component: ok
+          component: ok,
         });
       })
       .catch(() => {
         this.setState({
-          component: error
+          component: error,
         });
       });
   };
 
-  checkIsInstantiation = (target) => {
+  checkIsInstantiation = target => {
     if (React.isValidElement(target)) {
       return target;
     }
@@ -63,7 +63,7 @@ class PromiseRender extends React.PureComponent<IPromiseRenderProps, State> {
           height: '100%',
           margin: 'auto',
           paddingTop: 50,
-          textAlign: 'center'
+          textAlign: 'center',
         }}
       >
         <Spin size="large" />

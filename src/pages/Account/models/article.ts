@@ -4,7 +4,7 @@ export default {
   namespace: 'article',
 
   state: {
-    list: []
+    list: [],
   },
 
   effects: {
@@ -14,18 +14,18 @@ export default {
         const list = response.data;
         yield put({
           type: 'saveList',
-          payload: Array.isArray(list) ? list : []
+          payload: Array.isArray(list) ? list : [],
         });
       }
-    }
+    },
   },
 
   reducers: {
     saveList(state, { payload }) {
       return {
         ...state,
-        list: payload
+        list: payload,
       };
-    }
-  }
+    },
+  },
 };

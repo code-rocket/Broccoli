@@ -11,7 +11,7 @@ export default {
   },
 
   effects: {
-    * fetchCurrent(_, { call, put }) {
+    *fetchCurrent(_, { call, put }) {
       const response = yield call(fetchCurrentUser);
       if (response && response.code === 200) {
         const userInfo = response.data;
@@ -31,7 +31,7 @@ export default {
         });
       }
     },
-    * fetchLogout(_, { call, put }) {
+    *fetchLogout(_, { call, put }) {
       const response = yield call(fetchLogout);
       if (response && response.code === 200) {
         yield put({
@@ -44,7 +44,7 @@ export default {
             search: stringify({
               redirect: window.location.href,
             }),
-          }),
+          })
         );
       }
     },

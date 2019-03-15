@@ -32,7 +32,6 @@ export default {
   ...locales_library_en,
 };
 
-
 //
 // 'menu.algorithm': 'algorithm',
 //   'menu.algorithm.sort': 'sort algorithm',

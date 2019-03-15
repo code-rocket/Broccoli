@@ -8,9 +8,9 @@ export default {
       list: [],
       pagination: {
         current: 1,
-        total: 0
-      }
-    }
+        total: 0,
+      },
+    },
   },
 
   effects: {
@@ -18,15 +18,15 @@ export default {
       const response = yield call(fetchPage, payload);
       if (response && response.code === 200) {
       }
-    }
+    },
   },
 
   reducers: {
     saveTableData(state, { payload }) {
       return {
         ...state,
-        tableData: payload
+        tableData: payload,
       };
-    }
-  }
+    },
+  },
 };

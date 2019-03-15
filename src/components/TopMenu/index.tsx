@@ -6,18 +6,15 @@ import styles from './index.less';
 
 const SubMenu = Menu.SubMenu;
 
-
 interface TopMenuProps {
-  topMenuActive: string,
-  modulesInfo: Array<object>
+  topMenuActive: string;
+  modulesInfo: Array<object>;
 }
 
 //connect的作用是将组件和models结合在一起。将models中的state绑定到组件的props中。并提供一些额外的功能，譬如dispatch
 @connect(({ menu }) => ({
   topMenuActive: menu.topMenuActive,
 }))
-
-
 class TopMenu extends Component<TopMenuProps, any> {
   state = {
     modulesInfo: [{ name: '知识库', key: 'library' }, { name: 'Demo项目', key: 'demo' }],
@@ -27,9 +24,9 @@ class TopMenu extends Component<TopMenuProps, any> {
    * topMenuClick
    * @param e
    */
-  topMenuClick = (e) => {
+  topMenuClick = e => {
     console.log('click ', e);
-    this.setTopMenuActive(e.key);//设置顶部菜单栏 Active 状态
+    this.setTopMenuActive(e.key); //设置顶部菜单栏 Active 状态
     if (this.state.modulesInfo.some(module => module.key === e.key)) {
       this.toggleSideBar(e.key);
     }
@@ -39,7 +36,7 @@ class TopMenu extends Component<TopMenuProps, any> {
    * 设置顶部菜单栏 Active 状态
    * @param active
    */
-  setTopMenuActive = (active) => {
+  setTopMenuActive = active => {
     event.preventDefault();
     const { dispatch } = this.props;
     dispatch({
@@ -52,7 +49,7 @@ class TopMenu extends Component<TopMenuProps, any> {
    * 切换模块 - 切换 sidebar
    * @param active
    */
-  toggleSideBar = (active) => {
+  toggleSideBar = active => {
     event.preventDefault();
     const { dispatch } = this.props;
     dispatch({
@@ -71,10 +68,18 @@ class TopMenu extends Component<TopMenuProps, any> {
         className={styles.TopMenu}
       >
         <Menu.Item key="mail">
-          <Icon type="dashboard"/>主页
+          <Icon type="dashboard" />
+          主页
         </Menu.Item>
-        <SubMenu title={<span className="submenu-title-wrapper"><Icon type="setting"/>模块切换</span>}>
-          {this.state.modulesInfo.map((module: { key: string, name: string }) => (
+        <SubMenu
+          title={
+            <span className="submenu-title-wrapper">
+              <Icon type="setting" />
+              模块切换
+            </span>
+          }
+        >
+          {this.state.modulesInfo.map((module: { key: string; name: string }) => (
             <Menu.Item key={module.key}>{module.name}</Menu.Item>
           ))}
         </SubMenu>

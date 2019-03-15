@@ -16,23 +16,17 @@ export interface PageHeaderWrapperProps extends PageHeaderProps {
 }
 
 @connect(({ setting }) => ({
-  contentWidth: setting.contentWidth
+  contentWidth: setting.contentWidth,
 }))
 class PageHeaderWrapper extends PureComponent<PageHeaderWrapperProps, any> {
   render() {
-    const {
-      wrapperClassName,
-      top,
-      contentWidth,
-      children,
-      ...rest
-    } = this.props;
+    const { wrapperClassName, top, contentWidth, children, ...rest } = this.props;
 
     return (
       <div style={{ margin: '-24px -24px 0' }} className={wrapperClassName}>
         {top}
         <MenuContext.Consumer>
-          {(value) => (
+          {value => (
             <PageHeader
               wide={contentWidth === 'Fixed'}
               home={<FormattedMessage id="menu.home" defaultMessage="Home" />}
@@ -40,14 +34,9 @@ class PageHeaderWrapper extends PureComponent<PageHeaderWrapperProps, any> {
               key="pageHeader"
               {...rest}
               linkElement={Link}
-              itemRender={(item) => {
+              itemRender={item => {
                 if (item.locale) {
-                  return (
-                    <FormattedMessage
-                      id={item.locale}
-                      defaultMessage={item.title}
-                    />
-                  );
+                  return <FormattedMessage id={item.locale} defaultMessage={item.title} />;
                 }
                 return item.title;
               }}

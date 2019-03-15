@@ -27,7 +27,7 @@ class Ellipsis extends React.Component<EllipsisProps, any> {
     super(props);
     this.state = {
       text: '',
-      targetCount: 0
+      targetCount: 0,
     };
   }
 
@@ -57,7 +57,7 @@ class Ellipsis extends React.Component<EllipsisProps, any> {
       if (totalHeight <= targetHeight) {
         this.setState({
           text,
-          targetCount: text.length
+          targetCount: text.length,
         });
         return;
       }
@@ -70,7 +70,7 @@ class Ellipsis extends React.Component<EllipsisProps, any> {
 
       this.setState({
         text,
-        targetCount: count
+        targetCount: count,
       });
     }
   };
@@ -110,23 +110,23 @@ class Ellipsis extends React.Component<EllipsisProps, any> {
     return this.bisection(th, mid, begin, end, text, shadowNode);
   };
 
-  handleRoot = (n) => {
+  handleRoot = n => {
     this.root = n;
   };
 
-  handleContent = (n) => {
+  handleContent = n => {
     this.content = n;
   };
 
-  handleNode = (n) => {
+  handleNode = n => {
     this.node = n;
   };
 
-  handleShadow = (n) => {
+  handleShadow = n => {
     this.shadow = n;
   };
 
-  handleShadowChildren = (n) => {
+  handleShadowChildren = n => {
     this.shadowChildren = n;
   };
 
@@ -144,7 +144,7 @@ class Ellipsis extends React.Component<EllipsisProps, any> {
 
     const cls = ClassNames(styles.ellipsis, className, {
       [styles.lines]: lines && !isSupportLineClamp,
-      [styles.lineClamp]: lines && isSupportLineClamp
+      [styles.lineClamp]: lines && isSupportLineClamp,
     });
 
     if (!lines && !length) {
@@ -174,7 +174,7 @@ class Ellipsis extends React.Component<EllipsisProps, any> {
           className={cls}
           style={{
             WebkitLineClamp: lines,
-            WebkitBoxOrient: 'vertical'
+            WebkitBoxOrient: 'vertical',
           }}
           {...restProps}
         >

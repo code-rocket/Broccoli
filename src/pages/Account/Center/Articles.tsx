@@ -10,13 +10,13 @@ export interface ArticlesProps {
 }
 
 @connect(({ article }) => ({
-  list: article.list
+  list: article.list,
 }))
 class Articles extends Component<ArticlesProps, any> {
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch({
-      type: 'article/fetchList'
+      type: 'article/fetchList',
     });
   }
 
@@ -37,13 +37,13 @@ class Articles extends Component<ArticlesProps, any> {
         rowKey="id"
         itemLayout="vertical"
         dataSource={list}
-        renderItem={(item) => (
+        renderItem={item => (
           <List.Item
             key={item.id}
             actions={[
               <IconText type="star-o" text={item.star} />,
               <IconText type="like-o" text={item.like} />,
-              <IconText type="message" text={item.message} />
+              <IconText type="message" text={item.message} />,
             ]}
           >
             <List.Item.Meta

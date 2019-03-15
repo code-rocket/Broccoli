@@ -5,7 +5,7 @@ export default {
 
   state: {
     notice: [],
-    list: []
+    list: [],
   },
 
   effects: {
@@ -15,18 +15,18 @@ export default {
         const list = response.data;
         yield put({
           type: 'saveNotice',
-          payload: Array.isArray(list) ? list : []
+          payload: Array.isArray(list) ? list : [],
         });
       }
-    }
+    },
   },
 
   reducers: {
     saveNotice(state, { payload }) {
       return {
         ...state,
-        notice: payload
+        notice: payload,
       };
-    }
-  }
+    },
+  },
 };

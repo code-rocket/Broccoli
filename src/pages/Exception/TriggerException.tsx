@@ -5,23 +5,23 @@ import { Component } from '@/components/BaseComponent';
 import styles from './style.less';
 
 @connect(({ error }) => ({
-  isLoading: error.isLoading
+  isLoading: error.isLoading,
 }))
 class TriggerException extends Component {
   state = {
-    isLoading: false
+    isLoading: false,
   };
 
-  triggerError = (code) => {
+  triggerError = code => {
     this.setState({
-      isLoading: true
+      isLoading: true,
     });
     const { dispatch } = this.props;
     dispatch({
       type: 'error/query',
       payload: {
-        code
-      }
+        code,
+      },
     });
   };
 

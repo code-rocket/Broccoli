@@ -7,14 +7,14 @@ import { connect } from 'dva';
 
 export interface SubModuleProps {
   libraryLoading?: boolean;
-  articleStore: libraryModelProps
-  moduleInfo: moduleInfoProps
+  articleStore: libraryModelProps;
+  moduleInfo: moduleInfoProps;
 }
 
 //connect的作用是将组件和models结合在一起。将models中的state绑定到组件的props中。并提供一些额外的功能，譬如dispatch
 @connect(({ library, loading }) => ({
   articleStore: library.articleStore,
-  libraryLoading: loading.effects['library/getLibraryData'],//loading的effects对象里面的key就是异步请求的action名
+  libraryLoading: loading.effects['library/getLibraryData'], //loading的effects对象里面的key就是异步请求的action名
 }))
 class SubModule extends Component<SubModuleProps> {
   constructor(props) {
@@ -24,7 +24,7 @@ class SubModule extends Component<SubModuleProps> {
 
   componentWillMount() {
     console.log('SubModule - componentDidMount');
-    this.requestArticle();//request article data from library
+    this.requestArticle(); //request article data from library
   }
 
   /**
@@ -47,8 +47,7 @@ class SubModule extends Component<SubModuleProps> {
   handleArticle = (store, info) => {
     try {
       return store['filter'](art => info.key in art)[0][info.key];
-    }
-    catch (e) {
+    } catch (e) {
       return '';
     }
   };
@@ -63,7 +62,7 @@ class SubModule extends Component<SubModuleProps> {
         extra={<a href="#">Edit</a>}
         style={{ marginTop: 16 }}
       >
-        <CodeBlock content={article}/>
+        <CodeBlock content={article} />
       </Card>
     );
   }

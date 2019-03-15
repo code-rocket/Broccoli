@@ -11,8 +11,8 @@ describe('utils >> authority', () => {
         {
           path: '/dashboard',
           name: 'dashboard',
-          icon: 'dashboard'
-        }
+          icon: 'dashboard',
+        },
       ];
       expect(formatter(routes)).toEqual([
         {
@@ -20,8 +20,8 @@ describe('utils >> authority', () => {
           name: null, // formatMessage 无返回值
           icon: 'dashboard',
           auth: 'on',
-          locale: 'menu.dashboard'
-        }
+          locale: 'menu.dashboard',
+        },
       ]);
     });
 
@@ -34,10 +34,10 @@ describe('utils >> authority', () => {
           routes: [
             {
               path: '/dashboard/analysis',
-              name: 'analysis'
-            }
-          ]
-        }
+              name: 'analysis',
+            },
+          ],
+        },
       ];
       expect(formatter(routes)).toEqual([
         {
@@ -51,10 +51,10 @@ describe('utils >> authority', () => {
               path: '/dashboard/analysis',
               name: null,
               auth: 'on',
-              locale: 'menu.dashboard.analysis'
-            }
-          ]
-        }
+              locale: 'menu.dashboard.analysis',
+            },
+          ],
+        },
       ]);
     });
 
@@ -63,13 +63,13 @@ describe('utils >> authority', () => {
         {
           path: '/dashboard',
           name: 'dashboard',
-          icon: 'dashboard'
+          icon: 'dashboard',
         },
         {
           path: '/dashboard1',
           name: 'dashboard1',
-          icon: 'dashboard1'
-        }
+          icon: 'dashboard1',
+        },
       ];
       expect(formatter(routes)).toEqual([
         {
@@ -77,15 +77,15 @@ describe('utils >> authority', () => {
           name: null, // formatMessage 无返回值
           icon: 'dashboard',
           auth: 'on',
-          locale: 'menu.dashboard'
+          locale: 'menu.dashboard',
         },
         {
           path: '/dashboard1',
           name: null, // formatMessage 无返回值
           icon: 'dashboard1',
           auth: 'on',
-          locale: 'menu.dashboard1'
-        }
+          locale: 'menu.dashboard1',
+        },
       ]);
     });
 
@@ -99,10 +99,10 @@ describe('utils >> authority', () => {
           routes: [
             {
               path: '/dashboard/analysis',
-              name: 'analysis'
-            }
-          ]
-        }
+              name: 'analysis',
+            },
+          ],
+        },
       ];
       expect(formatter(routes)).toEqual([
         {
@@ -116,10 +116,10 @@ describe('utils >> authority', () => {
               path: '/dashboard/analysis',
               name: null,
               auth: 'off',
-              locale: 'menu.dashboard.analysis'
-            }
-          ]
-        }
+              locale: 'menu.dashboard.analysis',
+            },
+          ],
+        },
       ]);
     });
   });

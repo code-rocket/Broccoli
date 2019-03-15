@@ -9,7 +9,7 @@ export interface ApplicationsProps {
 }
 
 @connect(({ application }) => ({
-  list: application.list
+  list: application.list,
 }))
 class Applications extends PureComponent<ApplicationsProps, any> {
   render() {
@@ -17,29 +17,17 @@ class Applications extends PureComponent<ApplicationsProps, any> {
     const itemMenu = (
       <Menu>
         <Menu.Item>
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="http://www.alipay.com/"
-          >
+          <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">
             1st menu item
           </a>
         </Menu.Item>
         <Menu.Item>
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="http://www.taobao.com/"
-          >
+          <a target="_blank" rel="noopener noreferrer" href="http://www.taobao.com/">
             2nd menu item
           </a>
         </Menu.Item>
         <Menu.Item>
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="http://www.tmall.com/"
-          >
+          <a target="_blank" rel="noopener noreferrer" href="http://www.tmall.com/">
             3d menu item
           </a>
         </Menu.Item>
@@ -62,7 +50,7 @@ class Applications extends PureComponent<ApplicationsProps, any> {
         rowKey="id"
         grid={{ gutter: 24, xxl: 3, xl: 2, lg: 2, md: 2, sm: 2, xs: 1 }}
         dataSource={list}
-        renderItem={(item) => (
+        renderItem={item => (
           <List.Item key={item.id}>
             <Card
               hoverable
@@ -79,13 +67,10 @@ class Applications extends PureComponent<ApplicationsProps, any> {
                 </Tooltip>,
                 <Dropdown overlay={itemMenu}>
                   <Icon type="ellipsis" />
-                </Dropdown>
+                </Dropdown>,
               ]}
             >
-              <Card.Meta
-                avatar={<Avatar size="small" src={item.avatar} />}
-                title={item.title}
-              />
+              <Card.Meta avatar={<Avatar size="small" src={item.avatar} />} title={item.title} />
 
               <div>
                 <CardInfo

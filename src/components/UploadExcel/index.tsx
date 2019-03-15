@@ -11,10 +11,10 @@ class UploadExcel extends React.Component<UploadExcelProps, any> {
     super(props);
   }
 
-  readerData = (file) => {
-    return new Promise((resolve) => {
+  readerData = file => {
+    return new Promise(resolve => {
       const reader = new FileReader();
-      reader.onload = (e) => {
+      reader.onload = e => {
         // @ts-ignore
         const data = e.target.result;
         const fixedData = this.fixData(data);
@@ -35,34 +35,28 @@ class UploadExcel extends React.Component<UploadExcelProps, any> {
     onSuccess &&
       onSuccess({
         header,
-        results
+        results,
       });
   }
 
-  fixData = (data) => {
+  fixData = data => {
     let o = '';
     let l = 0;
     const w = 10240;
     for (; l < data.byteLength / w; ++l)
-      o += String.fromCharCode.apply(
-        null,
-        new Uint8Array(data.slice(l * w, l * w + w))
-      );
+      o += String.fromCharCode.apply(null, new Uint8Array(data.slice(l * w, l * w + w)));
     o += String.fromCharCode.apply(null, new Uint8Array(data.slice(l * w)));
     return o;
   };
 
-  getHeaderRow = (sheet) => {
+  getHeaderRow = sheet => {
     const headers = [];
     const range = XLSX.utils.decode_range(sheet['!ref']);
     let C;
     const R = range.s.r; /* start in the first row */
     for (C = range.s.c; C <= range.e.c; ++C) {
       /* walk every column in the range */
-      let cell =
-        sheet[
-          XLSX.utils.encode_cell({ c: C, r: R })
-        ]; /* find the cell in the first row */
+      let cell = sheet[XLSX.utils.encode_cell({ c: C, r: R })]; /* find the cell in the first row */
       let hdr = 'UNKNOWN ' + C; // <-- replace with your desired default
       if (cell && cell.t) hdr = XLSX.utils.format_cell(cell);
       headers.push(hdr);
@@ -70,18 +64,18 @@ class UploadExcel extends React.Component<UploadExcelProps, any> {
     return headers;
   };
 
-  isExcel = (file) => {
+  isExcel = file => {
     return /\.(xlsx|xls|csv)$/.test(file.name);
   };
 
   render() {
     const options = {
       accept: '.xlsx, .xls',
-      action: (file) => {
+      action: file => {
         return this.readerData(file);
       },
       showUploadList: false,
-      beforeUpload: (file) => {
+      beforeUpload: file => {
         if (!this.isExcel(file)) {
           message.error('只能选择.xlsx, .xls, .csv格式的文件');
           return false;
@@ -91,7 +85,7 @@ class UploadExcel extends React.Component<UploadExcelProps, any> {
           return false;
         }
         return true;
-      }
+      },
     };
     return (
       <Upload {...options}>

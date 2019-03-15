@@ -10,13 +10,13 @@ export interface FooterToolbarProps {
 
 class FooterToolbar extends React.Component<FooterToolbarProps, any> {
   static defaultProps = {
-    className: ''
+    className: '',
   };
 
   constructor(props) {
     super(props);
     this.state = {
-      width: undefined
+      width: undefined,
     };
   }
 
@@ -38,7 +38,7 @@ class FooterToolbar extends React.Component<FooterToolbarProps, any> {
     const { width: stateWidth } = this.state;
     if (stateWidth !== width) {
       this.setState({
-        width
+        width,
       });
     }
   };

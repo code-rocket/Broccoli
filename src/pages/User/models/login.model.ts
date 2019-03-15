@@ -35,6 +35,6 @@ export default {
         }
         yield put(routerRedux.replace(redirect || '/'));
       }
-    }
-  }
+    },
+  },
 };

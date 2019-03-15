@@ -45,24 +45,17 @@ const ListItemMeta = ListItem.Meta;
 
 class NoticeList extends React.Component<NoticeListProps, any> {
   static defaultProps: Partial<NoticeListProps> = {
-    showClear: true
+    showClear: true,
   };
 
-  handleClear = (event) => {
+  handleClear = event => {
     event.preventDefault();
     const { onClear } = this.props;
     onClear && onClear();
   };
 
   render() {
-    const {
-      data = [],
-      showClear,
-      locale,
-      title,
-      emptyImage,
-      emptyText
-    } = this.props;
+    const { data = [], showClear, locale, title, emptyImage, emptyText } = this.props;
 
     return data.length === 0 ? (
       <div className={styles.notFound}>
@@ -76,7 +69,7 @@ class NoticeList extends React.Component<NoticeListProps, any> {
           dataSource={data}
           renderItem={(item, index) => {
             const itemCls = ClassNames(styles.item, {
-              [styles.read]: item.read
+              [styles.read]: item.read,
             });
 
             const leftIcon = item.avatar ? (
@@ -91,9 +84,7 @@ class NoticeList extends React.Component<NoticeListProps, any> {
               <ListItem className={itemCls} key={item.key || index}>
                 <ListItemMeta
                   className={styles.meta}
-                  avatar={
-                    <span className={styles.iconElement}>{leftIcon}</span>
-                  }
+                  avatar={<span className={styles.iconElement}>{leftIcon}</span>}
                   title={
                     <div className={styles.title}>
                       {item.title}
@@ -102,9 +93,7 @@ class NoticeList extends React.Component<NoticeListProps, any> {
                   }
                   description={
                     <div>
-                      <div className={styles.description}>
-                        {item.description}
-                      </div>
+                      <div className={styles.description}>{item.description}</div>
                       <div className={styles.datetime}>{item.datetime}</div>
                     </div>
                   }

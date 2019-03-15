@@ -10,7 +10,7 @@ export default {
 
   effects: {
     //调用请求的事件，获取数据
-    * testGetEvent(_, { call, put }) {
+    *testGetEvent(_, { call, put }) {
       const response = yield call(testget);
       console.log(response);
       if (response && response.code === 200) {
@@ -23,7 +23,7 @@ export default {
       }
     },
     //调用请求的事件，获取数据
-    * testPostEvent(_, { call, put }) {
+    *testPostEvent(_, { call, put }) {
       const response = yield call(testpost);
       console.log(response);
       if (response && response.code === 200) {

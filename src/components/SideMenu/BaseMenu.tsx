@@ -45,21 +45,17 @@ class BaseMenu extends React.PureComponent<BaseMenuProps, any> {
   }
 
   // 获取菜单子节点
-  getNavMenuItems = (menusData) => {
+  getNavMenuItems = menusData => {
     if (!menusData) return [];
     return menusData
-      .filter((item) => item.name && !item.hideInMenu)
-      .map((item) => this.getSubMenuOrItem(item))
-      .filter((item) => item);
+      .filter(item => item.name && !item.hideInMenu)
+      .map(item => this.getSubMenuOrItem(item))
+      .filter(item => item);
   };
 
   //
-  getSubMenuOrItem = (item) => {
-    if (
-      item.children &&
-      !item.hideChildrenInMenu &&
-      item.children.some((child) => child.name)
-    ) {
+  getSubMenuOrItem = item => {
+    if (item.children && !item.hideChildrenInMenu && item.children.some(child => child.name)) {
       const { name } = item;
       return (
         <SubMenu
@@ -82,7 +78,7 @@ class BaseMenu extends React.PureComponent<BaseMenuProps, any> {
     return <Menu.Item key={item.path}>{this.getMenuItemPath(item)}</Menu.Item>;
   };
 
-  getMenuItemPath = (item) => {
+  getMenuItemPath = item => {
     const { name } = item;
     const itemPath = this.conversionPath(item.path);
     const icon = getIcon(item.icon);
@@ -116,18 +112,16 @@ class BaseMenu extends React.PureComponent<BaseMenuProps, any> {
     );
   };
 
-  conversionPath = (path) => {
+  conversionPath = path => {
     if (path && path.indexOf('http') === 0) {
       return path;
     }
     return `/${path || ''}`.replace(/\/+/g, '/');
   };
 
-  getSelectedMenuKeys = (pathname) => {
+  getSelectedMenuKeys = pathname => {
     const { flatMenuKeys } = this.props;
-    return urlToList(pathname).map((itemPath) =>
-      getMenuMatches(flatMenuKeys, itemPath).pop()
-    );
+    return urlToList(pathname).map(itemPath => getMenuMatches(flatMenuKeys, itemPath).pop());
   };
 
   render() {
@@ -138,7 +132,7 @@ class BaseMenu extends React.PureComponent<BaseMenuProps, any> {
       location: { pathname },
       onOpenChange,
       style,
-      menuData
+      menuData,
     } = this.props;
     let selectedKeys = this.getSelectedMenuKeys(pathname);
     if (!selectedKeys.length && openKeys) {
@@ -147,7 +141,7 @@ class BaseMenu extends React.PureComponent<BaseMenuProps, any> {
     let props = {};
     if (openKeys) {
       props = {
-        openKeys
+        openKeys,
       };
     }
 

@@ -34,25 +34,25 @@ class HeaderSearch extends React.PureComponent<HeaderSearchProps, State> {
 
   static defaultProps: DefaultProps = {
     defaultOpen: false,
-    open: false
+    open: false,
   };
 
   readonly state: State = {
     searchMode: this.props.defaultOpen,
-    value: ''
+    value: '',
   };
 
   componentWillUnmount() {
     clearTimeout(this.timeout);
   }
 
-  handleChange = (value) => {
+  handleChange = value => {
     const { onChange } = this.props;
     this.setState({ value });
     onChange && onChange(value);
   };
 
-  onKeyDown = (e) => {
+  onKeyDown = e => {
     if (e.key === 'Enter') {
       const { onPressEnter } = this.props;
       const { value } = this.state;
@@ -74,14 +74,14 @@ class HeaderSearch extends React.PureComponent<HeaderSearchProps, State> {
   leaveSearchMode = () => {
     this.setState({
       searchMode: false,
-      value: ''
+      value: '',
     });
   };
 
   @Bind()
   @Debounce(500, {
     leading: true,
-    trailing: false
+    trailing: false,
   })
   debouncePressEnter() {
     const { onPressEnter } = this.props;
@@ -109,13 +109,13 @@ class HeaderSearch extends React.PureComponent<HeaderSearchProps, State> {
           key="AutoComplete"
           {...restProps}
           className={ClassNames(styles.input, {
-            [styles.show]: searchMode
+            [styles.show]: searchMode,
           })}
           value={value}
           onChange={this.handleChange}
         >
           <Input
-            ref={(node) => {
+            ref={node => {
               this.input = node;
             }}
             aria-label={placeholder}

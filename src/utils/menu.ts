@@ -4,12 +4,7 @@ import { formatMessage } from 'umi/locale';
 import { judgeType } from './utils';
 
 export interface Formatter {
-  (
-    routes: any[],
-    parentAuth?: string,
-    parentName?: string,
-    paths?: any[],
-  ): any[];
+  (routes: any[], parentAuth?: string, parentName?: string, paths?: any[]): any[];
 }
 
 /**
@@ -19,14 +14,9 @@ export interface Formatter {
  * @param parentName
  * @param paths
  */
-export const formatter: Formatter = function(
-  routes,
-  parentAuth,
-  parentName,
-  paths,
-) {
+export const formatter: Formatter = function(routes, parentAuth, parentName, paths) {
   return routes
-    .map((item) => {
+    .map(item => {
       if (!item.name || !item.path) {
         return null;
       }
@@ -61,18 +51,18 @@ export const formatter: Formatter = function(
       delete result.routes;
       return result;
     })
-    .filter((item) => item);
+    .filter(item => item);
 };
 
 /**
  * 获取面包屑映射
  * @param {Object} menuData 菜单配置
  */
-const getBreadcrumbNameMap = (menuData) => {
+const getBreadcrumbNameMap = menuData => {
   const routerMap = {};
 
-  const flattenMenuData = (data) => {
-    data.forEach((menuItem) => {
+  const flattenMenuData = data => {
+    data.forEach(menuItem => {
       if (menuItem.children) {
         flattenMenuData(menuItem.children);
       }
@@ -84,19 +74,16 @@ const getBreadcrumbNameMap = (menuData) => {
   return routerMap;
 };
 
-
 /**
  * 过滤需要隐藏的菜单 - filter Menu Data by hide property
  * @param menuData
  * @returns {any}
  */
-export const filterMenuDataByHide = (menuData) => {
+export const filterMenuDataByHide = menuData => {
   if (!menuData) {
     return [];
   }
-  return menuData
-    .filter((item) => item.name && !item.hideInMenu)
-    .filter((item) => item);
+  return menuData.filter(item => item.name && !item.hideInMenu).filter(item => item);
 };
 /**
  * 依据class过滤菜单 - filter menu data by class
@@ -109,8 +96,8 @@ export const filterMenuDataByClass = (menuData, Class: string = '') => {
     return [];
   }
   return menuData
-    .filter((item) => item.meta && judgeType(item.meta) === 'object')
-    .filter((item) => item.meta.class === Class);
+    .filter(item => item.meta && judgeType(item.meta) === 'object')
+    .filter(item => item.meta.class === Class);
 };
 
 export const MOGetBreadcrumbNameMap = MemoizeOne(getBreadcrumbNameMap, isEqual);

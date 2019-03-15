@@ -14,7 +14,7 @@ export interface ChartCardProps {
   style?: React.CSSProperties;
 }
 
-const renderTotal = (total) => {
+const renderTotal = total => {
   let totalDom;
   switch (typeof total) {
     case 'undefined':
@@ -31,7 +31,7 @@ const renderTotal = (total) => {
 
 class ChartCard extends React.Component<ChartCardProps, any> {
   static defaultProps = {
-    loading: false
+    loading: false,
   };
 
   constructor(props) {
@@ -39,23 +39,14 @@ class ChartCard extends React.Component<ChartCardProps, any> {
   }
 
   render() {
-    const {
-      loading,
-      children,
-      footer,
-      avatar,
-      title,
-      action,
-      total,
-      contentHeight
-    } = this.props;
+    const { loading, children, footer, avatar, title, action, total, contentHeight } = this.props;
 
     return (
       <Card loading={loading} bodyStyle={{ padding: '20px 24px 8px 24px' }}>
         <div className={styles.chartCard}>
           <div
             className={ClassNames(styles.chartTop, {
-              [styles.chartTopMargin]: !children && !footer
+              [styles.chartTopMargin]: !children && !footer,
             })}
           >
             {avatar && <div className={styles.avatar}>{avatar}</div>}
@@ -68,19 +59,14 @@ class ChartCard extends React.Component<ChartCardProps, any> {
             </div>
           </div>
           {children && (
-            <div
-              className={styles.content}
-              style={{ height: contentHeight || 'auto' }}
-            >
-              <div className={contentHeight && styles.contentFixed}>
-                {children}
-              </div>
+            <div className={styles.content} style={{ height: contentHeight || 'auto' }}>
+              <div className={contentHeight && styles.contentFixed}>{children}</div>
             </div>
           )}
           {footer && (
             <div
               className={ClassNames(styles.footer, {
-                [styles.footerMargin]: !children
+                [styles.footerMargin]: !children,
               })}
             >
               {footer}

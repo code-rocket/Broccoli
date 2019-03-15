@@ -6,19 +6,18 @@ import { List, Button, Row, Col } from 'antd';
 import styles from './Layout.less';
 
 export interface TestPage1Props {
-  testContent: { list: any[], type: string };
+  testContent: { list: any[]; type: string };
 }
 
 @connect(({ testServer }) => ({
   testContent: testServer.testContent,
 }))
-
 class TestPage1 extends Component<TestPage1Props, any> {
   componentDidMount() {
     console.log('componentDidMount', this.props.testContent);
   }
 
-  handleSubmit = (type) => {
+  handleSubmit = type => {
     event.preventDefault();
     const { dispatch } = this.props;
     dispatch({
@@ -34,10 +33,14 @@ class TestPage1 extends Component<TestPage1Props, any> {
         <h1>Test-page1</h1>
         <Row gutter={16}>
           <Col span={12} className={styles['ant-col-center']}>
-            <Button type="primary" htmlType="submit" onClick={() => this.handleSubmit('GET')}>点击测试GET</Button>
+            <Button type="primary" htmlType="submit" onClick={() => this.handleSubmit('GET')}>
+              点击测试GET
+            </Button>
           </Col>
           <Col span={12} className={styles['ant-col-center']}>
-            <Button type="dashed" htmlType="submit" onClick={() => this.handleSubmit('POST')}>点击测试POST</Button>
+            <Button type="dashed" htmlType="submit" onClick={() => this.handleSubmit('POST')}>
+              点击测试POST
+            </Button>
           </Col>
         </Row>
         <h1>{type}</h1>
@@ -47,10 +50,8 @@ class TestPage1 extends Component<TestPage1Props, any> {
           rowKey="id"
           itemLayout="vertical"
           dataSource={list}
-          renderItem={(item) => (
-            <List.Item
-              key={item.id}
-            >
+          renderItem={item => (
+            <List.Item key={item.id}>
               <List.Item.Meta
                 title={
                   <a className={styles.listItemMetaTitle} href={item.href}>
@@ -58,12 +59,12 @@ class TestPage1 extends Component<TestPage1Props, any> {
                   </a>
                 }
               />
-              <ArticleListContent data={item}/>
+              <ArticleListContent data={item} />
             </List.Item>
           )}
         />
       </div>
-    )
+    );
   }
 }
 

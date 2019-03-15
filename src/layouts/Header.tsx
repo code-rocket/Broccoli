@@ -41,7 +41,7 @@ class HeaderView extends PureComponent<HeaderProps, any> {
     visible: true,
   };
 
-  handleNoticeVisibleChange = (visible) => {
+  handleNoticeVisibleChange = visible => {
     if (visible) {
       const { dispatch } = this.props;
       dispatch({

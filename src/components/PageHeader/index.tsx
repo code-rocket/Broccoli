@@ -27,14 +27,14 @@ export interface PageHeaderProps {
 
 class PageHeader extends React.PureComponent<PageHeaderProps, any> {
   static defaultProps = {
-    className: ''
+    className: '',
   };
 
   constructor(props) {
     super(props);
   }
 
-  handleChange = (key) => {
+  handleChange = key => {
     const { onTabChange } = this.props;
     onTabChange && onTabChange(key);
   };
@@ -63,7 +63,7 @@ class PageHeader extends React.PureComponent<PageHeaderProps, any> {
       activeKey: string;
     } = {
       defaultActiveKey: '',
-      activeKey: ''
+      activeKey: '',
     };
 
     if (tabDefaultActiveKey !== undefined) {
@@ -94,9 +94,7 @@ class PageHeader extends React.PureComponent<PageHeaderProps, any> {
                 </div>
                 <div className={styles.row}>
                   {content && <div className={styles.content}>{content}</div>}
-                  {extraContent && (
-                    <div className={styles.extraContent}>{extraContent}</div>
-                  )}
+                  {extraContent && <div className={styles.extraContent}>{extraContent}</div>}
                 </div>
               </div>
             </div>
@@ -107,7 +105,7 @@ class PageHeader extends React.PureComponent<PageHeaderProps, any> {
                 onChange={this.handleChange}
                 tabBarExtraContent={tabBarExtraContent}
               >
-                {tabList.map((item) => (
+                {tabList.map(item => (
                   <TabPane tab={item.tab} key={item.key} />
                 ))}
               </Tabs>

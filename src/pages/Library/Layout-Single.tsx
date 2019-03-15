@@ -6,7 +6,7 @@ import { recombinate } from './units';
 import SubModule from './SubModule';
 
 export interface LibraryLayoutProps {
-  validInfo: moduleInfoProps
+  validInfo: moduleInfoProps;
 }
 
 class LibraryLayout extends Component<LibraryLayoutProps, any> {
@@ -21,9 +21,7 @@ class LibraryLayout extends Component<LibraryLayoutProps, any> {
     console.log('SortLayout - componentWillMount');
   }
 
-  componentDidMount() {
-
-  }
+  componentDidMount() {}
 
   /**
    * get valid information from route information
@@ -34,8 +32,7 @@ class LibraryLayout extends Component<LibraryLayoutProps, any> {
     try {
       if (!route) return {};
       return recombinate(route);
-    }
-    catch (e) {
+    } catch (e) {
       return {};
     }
   }
@@ -45,7 +42,7 @@ class LibraryLayout extends Component<LibraryLayoutProps, any> {
     return (
       <Row gutter={24} className={'LibraryLayout'}>
         <Col lg={24} md={24}>
-          <SubModule moduleInfo={validInfo}/>
+          <SubModule moduleInfo={validInfo} />
         </Col>
       </Row>
     );

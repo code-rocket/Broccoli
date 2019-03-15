@@ -9,7 +9,7 @@ export interface GridContentProps {
 }
 
 @connect(({ setting }) => ({
-  contentWidth: setting.contentWidth
+  contentWidth: setting.contentWidth,
 }))
 class GridContent extends PureComponent<GridContentProps, any> {
   render() {

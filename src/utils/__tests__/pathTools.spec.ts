@@ -13,7 +13,7 @@ describe('utils >> pathTools', () => {
     expect(urlToList('/userInfo/798/role')).toEqual([
       '/userInfo',
       '/userInfo/798',
-      '/userInfo/798/role'
+      '/userInfo/798/role',
     ]);
   });
 });

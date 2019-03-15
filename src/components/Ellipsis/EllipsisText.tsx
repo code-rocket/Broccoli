@@ -12,14 +12,14 @@ export interface EllipsisTextProps {
 
 export const TooltipOverlayStyle = {
   overflowWrap: 'break-word',
-  wordWrap: 'break-word'
+  wordWrap: 'break-word',
 };
 
 const tail = '...';
 
 class EllipsisText extends React.Component<EllipsisTextProps, any> {
   static defaultProps = {
-    className: ''
+    className: '',
   };
 
   constructor(props) {
@@ -27,17 +27,9 @@ class EllipsisText extends React.Component<EllipsisTextProps, any> {
   }
 
   render() {
-    const {
-      text,
-      tooltip,
-      length,
-      fullWidthRecognition,
-      ...restProps
-    } = this.props;
+    const { text, tooltip, length, fullWidthRecognition, ...restProps } = this.props;
 
-    const textLength = fullWidthRecognition
-      ? getStrFullLength(text)
-      : text.length;
+    const textLength = fullWidthRecognition ? getStrFullLength(text) : text.length;
     if (textLength <= length || length < 0) {
       return <span {...restProps}>{text}</span>;
     }
@@ -45,9 +37,7 @@ class EllipsisText extends React.Component<EllipsisTextProps, any> {
     if (length - tail.length <= 0) {
       displayText = '';
     } else {
-      displayText = fullWidthRecognition
-        ? cutStrByFullLength(text, length)
-        : text.slice(0, length);
+      displayText = fullWidthRecognition ? cutStrByFullLength(text, length) : text.slice(0, length);
     }
     if (tooltip) {
       return (

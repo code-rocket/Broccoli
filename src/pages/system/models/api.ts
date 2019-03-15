@@ -8,9 +8,9 @@ export default {
       list: [],
       pagination: {
         current: 1,
-        total: 0
-      }
-    }
+        total: 0,
+      },
+    },
   },
 
   effects: {
@@ -23,9 +23,9 @@ export default {
           payload: {
             list,
             pagination: {
-              total
-            }
-          }
+              total,
+            },
+          },
         });
       }
     },
@@ -34,15 +34,15 @@ export default {
       if (response && response.data) {
         callback && callback();
       }
-    }
+    },
   },
 
   reducers: {
     saveTableData(state, { payload }) {
       return {
         ...state,
-        tableData: payload
+        tableData: payload,
       };
-    }
-  }
+    },
+  },
 };

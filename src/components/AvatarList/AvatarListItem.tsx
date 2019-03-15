@@ -13,7 +13,7 @@ export interface AvatarListItemProps {
 
 class AvatarListItem extends React.Component<AvatarListItemProps, any> {
   static defaultProps = {
-    size: 'default'
+    size: 'default',
   };
 
   constructor(props) {
@@ -26,7 +26,7 @@ class AvatarListItem extends React.Component<AvatarListItemProps, any> {
     const clsString = ClassNames(styles.avatarItem, {
       [styles.avatarItemLarge]: size === 'large',
       [styles.avatarItemSmall]: size === 'small',
-      [styles.avatarItemMini]: size === 'mini'
+      [styles.avatarItemMini]: size === 'mini',
     });
 
     return (

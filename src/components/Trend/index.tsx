@@ -14,7 +14,7 @@ class Trend extends React.Component<TrendProps, any> {
   static defaultProps = {
     className: '',
     colorful: true,
-    reverseColor: false
+    reverseColor: false,
   };
 
   constructor(props) {
@@ -25,13 +25,10 @@ class Trend extends React.Component<TrendProps, any> {
     const { colorful, reverseColor, children, flag } = this.props;
     const clsString = ClassNames(styles.trendItem, {
       [styles.trendItemGrey]: !colorful,
-      [styles.reverseColor]: reverseColor && colorful
+      [styles.reverseColor]: reverseColor && colorful,
     });
     return (
-      <div
-        className={clsString}
-        title={typeof children === 'string' ? children : ''}
-      >
+      <div className={clsString} title={typeof children === 'string' ? children : ''}>
         <span>{children}</span>
         {flag && (
           <span className={styles[flag]}>

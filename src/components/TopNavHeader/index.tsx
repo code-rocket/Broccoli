@@ -13,7 +13,7 @@ interface State {
 
 class TopNavHeader extends React.PureComponent<TopNavHeaderProps, State> {
   readonly state: State = {
-    maxWidth: 1200
+    maxWidth: 1200,
   };
 
   render() {
@@ -23,12 +23,12 @@ class TopNavHeader extends React.PureComponent<TopNavHeaderProps, State> {
     return (
       <div
         className={ClassNames(styles.head, {
-          [styles.light]: theme === 'light'
+          [styles.light]: theme === 'light',
         })}
       >
         <div
           className={ClassNames(styles.main, {
-            [styles.wide]: contentWidth === 'Fixed'
+            [styles.wide]: contentWidth === 'Fixed',
           })}
         >
           <div className={styles.left} />

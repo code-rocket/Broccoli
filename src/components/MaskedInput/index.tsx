@@ -11,13 +11,13 @@ class MaskedInput extends React.Component<IMaskedInputProps, any> {
     className: '',
     guide: true,
     placeholderChar: '_',
-    keepCharPositions: false
+    keepCharPositions: false,
   };
 
   constructor(props) {
     super(props);
     this.state = {
-      value: props.value || ''
+      value: props.value || '',
     };
   }
 

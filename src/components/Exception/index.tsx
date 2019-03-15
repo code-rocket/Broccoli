@@ -20,7 +20,7 @@ class Exception extends React.Component<ExceptionProps, any> {
   static defaultProps = {
     className: '',
     backText: '返回首页',
-    linkElement: 'a'
+    linkElement: 'a',
   };
 
   constructor(props) {
@@ -28,16 +28,7 @@ class Exception extends React.Component<ExceptionProps, any> {
   }
 
   render() {
-    const {
-      className,
-      backText,
-      img,
-      type,
-      title,
-      desc,
-      actions,
-      linkElement
-    } = this.props;
+    const { className, backText, img, type, title, desc, actions, linkElement } = this.props;
 
     const pageType = type in config ? type : '404';
 
@@ -48,7 +39,7 @@ class Exception extends React.Component<ExceptionProps, any> {
           <div
             className={styles.imgEle}
             style={{
-              backgroundImage: `url(${img || config[pageType].img})`
+              backgroundImage: `url(${img || config[pageType].img})`,
             }}
           />
         </div>
@@ -61,7 +52,7 @@ class Exception extends React.Component<ExceptionProps, any> {
                 linkElement as any,
                 {
                   to: '/',
-                  href: '/'
+                  href: '/',
                 },
                 <Button type="primary">{backText}</Button>
               )}

@@ -12,6 +12,5 @@ export interface routeKeyType {
   children?: Array<object>;
   routes?: Array<object>;
   redirect?: string;
-  meta?: routeKeyType
+  meta?: routeKeyType;
 }
-

@@ -8,14 +8,10 @@ class TestPage2 extends Component {
   componentDidMount() {
     console.log('test-page2');
     console.log(router_interviewMap);
-
   }
 
-
   render() {
-    return <div>
-      test-page2
-    </div>;
+    return <div>test-page2</div>;
   }
 }
 

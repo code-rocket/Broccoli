@@ -18,7 +18,7 @@ export interface ArticleListContentProps {
 class ArticleListContent extends React.Component<ArticleListContentProps, any> {
   render() {
     const {
-      data: { content, avatar, href, owner, updateTime }
+      data: { content, avatar, href, owner, updateTime },
     } = this.props;
     return (
       <div className={styles.listContent}>

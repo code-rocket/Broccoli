@@ -5,7 +5,7 @@ export default {
 
   state: {
     collapsed: false,
-    notices: []
+    notices: [],
   },
 
   effects: {
@@ -15,34 +15,34 @@ export default {
         const notices = response.data || [];
         yield put({
           type: 'saveNotices',
-          payload: notices
+          payload: notices,
         });
         const unreadCount = yield select(
-          (state) => state.global.notices.filter((item) => !item.read).length
+          state => state.global.notices.filter(item => !item.read).length
         );
         yield put({
           type: 'user/changeNotifyCount',
           payload: {
             totalCount: notices.length,
-            unreadCount
-          }
+            unreadCount,
+          },
         });
       }
-    }
+    },
   },
 
   reducers: {
     changeLayoutCollapsed(state, { payload }) {
       return {
         ...state,
-        collapsed: payload
+        collapsed: payload,
       };
     },
     saveNotices(state, { payload }) {
       return {
         ...state,
-        notices: payload
+        notices: payload,
       };
-    }
-  }
+    },
+  },
 };

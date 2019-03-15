@@ -52,11 +52,11 @@ class NoticeIcon extends React.PureComponent<NoticeIconProps, State> {
   static defaultProps: DefaultProps = {
     bell: <Icon type="bell" className={styles.icon} />,
     loading: false,
-    clearClose: false
+    clearClose: false,
   };
 
   readonly state: State = {
-    visible: false
+    visible: false,
   };
 
   onItemClick = (item, tabProps) => {
@@ -65,22 +65,22 @@ class NoticeIcon extends React.PureComponent<NoticeIconProps, State> {
     onItemClick && onItemClick(item, tabProps);
     if (clickClose) {
       this.setState({
-        visible: false
+        visible: false,
       });
     }
   };
 
-  onTabChange = (tabType) => {
+  onTabChange = tabType => {
     const { onTabChange } = this.props;
     onTabChange && onTabChange(tabType);
   };
 
-  onClear = (name) => {
+  onClear = name => {
     const { onClear, clearClose } = this.props;
     onClear && onClear(name);
     if (clearClose) {
       this.setState({
-        visible: false
+        visible: false,
       });
     }
   };
@@ -100,7 +100,7 @@ class NoticeIcon extends React.PureComponent<NoticeIconProps, State> {
             <List
               {...child.props}
               data={list}
-              onClick={(item) => this.onItemClick(item, child.props)}
+              onClick={item => this.onItemClick(item, child.props)}
               onClear={this.onClear}
               title={title}
               locale={locale}
@@ -121,7 +121,7 @@ class NoticeIcon extends React.PureComponent<NoticeIconProps, State> {
   handleVisibleChange = (visible: boolean) => {
     const { onPopupVisibleChange } = this.props;
     this.setState({
-      visible
+      visible,
     });
     onPopupVisibleChange(visible);
   };
@@ -133,14 +133,10 @@ class NoticeIcon extends React.PureComponent<NoticeIconProps, State> {
     const trigger = (
       <span
         className={ClassNames(className, styles.noticeButton, {
-          opened: visible
+          opened: visible,
         })}
       >
-        <Badge
-          count={count}
-          style={{ boxShadow: 'none' }}
-          className={styles.badge}
-        >
+        <Badge count={count} style={{ boxShadow: 'none' }} className={styles.badge}>
           {bell}
         </Badge>
       </span>
@@ -164,7 +160,7 @@ class NoticeIcon extends React.PureComponent<NoticeIconProps, State> {
         trigger={['click']}
         visible={visible}
         onVisibleChange={this.handleVisibleChange}
-        ref={(node) => (this.dropDown = ReactDOM.findDOMNode(node))}
+        ref={node => (this.dropDown = ReactDOM.findDOMNode(node))}
       >
         {trigger}
       </HeaderDropDown>

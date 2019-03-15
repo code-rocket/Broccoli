@@ -11,7 +11,7 @@ function fixedZero(val) {
   return val * 1 < 10 ? `0${val}` : val;
 }
 
-const initTime = (props) => {
+const initTime = props => {
   let lastTime = 0;
   let targetTime = 0;
   try {
@@ -27,7 +27,7 @@ const initTime = (props) => {
 
   lastTime = targetTime - new Date().getTime();
   return {
-    lastTime: lastTime < 0 ? 0 : lastTime
+    lastTime: lastTime < 0 ? 0 : lastTime,
   };
 };
 
@@ -39,7 +39,7 @@ class CountDown extends React.Component<CountDownProps, any> {
     super(props);
     const { lastTime } = initTime(props);
     this.state = {
-      lastTime
+      lastTime,
     };
     this.timer = 0;
     this.interval = 1000;
@@ -65,13 +65,13 @@ class CountDown extends React.Component<CountDownProps, any> {
     const { lastTime } = initTime(nextProps);
     if (preState.lastTime !== lastTime) {
       return {
-        lastTime
+        lastTime,
       };
     }
     return null;
   }
 
-  defaultFormat = (time) => {
+  defaultFormat = time => {
     const hours = 60 * 60 * 1000;
     const minutes = 60 * 1000;
 
@@ -95,7 +95,7 @@ class CountDown extends React.Component<CountDownProps, any> {
         clearTimeout(this.timer);
         this.setState(
           {
-            lastTime: 0
+            lastTime: 0,
           },
           () => {
             if (onEnd) {
@@ -107,7 +107,7 @@ class CountDown extends React.Component<CountDownProps, any> {
         lastTime -= this.interval;
         this.setState(
           {
-            lastTime
+            lastTime,
           },
           () => {
             this.tick();

@@ -1,9 +1,9 @@
 import PathToRegexp from 'path-to-regexp';
 import { urlToList } from '@/utils/pathTools';
 
-export const getFlatMenuKeys = (menuData) => {
+export const getFlatMenuKeys = menuData => {
   let keys = [];
-  menuData.forEach((item) => {
+  menuData.forEach(item => {
     keys.push(item.path);
     if (item.children) {
       keys = keys.concat(getFlatMenuKeys(item.children));
@@ -19,7 +19,7 @@ export const getFlatMenuKeys = (menuData) => {
  * @returns {any}
  */
 export const getMenuMatches = (flatMenuKeys, path) =>
-  flatMenuKeys.filter((item) => {
+  flatMenuKeys.filter(item => {
     if (item) {
       return PathToRegexp(item).test(path);
     }
@@ -31,12 +31,12 @@ export const getMenuMatches = (flatMenuKeys, path) =>
  * @param props
  * @returns {any[]}
  */
-export const getDefaultCollapsedSubMenus = (props) => {
+export const getDefaultCollapsedSubMenus = props => {
   const {
     location: { pathname },
     flatMenuKeys,
   } = props;
   return urlToList(pathname)
-    .map((item) => getMenuMatches(flatMenuKeys, item)[0])
-    .filter((item) => item);
+    .map(item => getMenuMatches(flatMenuKeys, item)[0])
+    .filter(item => item);
 };

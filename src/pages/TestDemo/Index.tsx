@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'dva';
 import { Component } from '@/components/BaseComponent';
 
-
 @connect(({}) => ({}))
 class TestMap extends Component {
   componentDidMount() {

@@ -19,7 +19,7 @@ export interface LotusBreadcrumbProps {
 export const getBreadcrumb = (breadcrumbNameMap, url) => {
   let breadcrumb = breadcrumbNameMap[url];
   if (!breadcrumb) {
-    Object.keys(breadcrumbNameMap).forEach((item) => {
+    Object.keys(breadcrumbNameMap).forEach(item => {
       if (PathToRegexp(item).test(url)) {
         breadcrumb = breadcrumbNameMap[item];
       }
@@ -51,7 +51,7 @@ class LotusBreadcrumb extends React.PureComponent<LotusBreadcrumbProps, any> {
         linkElement as any,
         {
           href: paths.join('/') || '/',
-          to: paths.join('/') || '/'
+          to: paths.join('/') || '/',
         },
         route.breadcrumbName
       )
@@ -59,12 +59,7 @@ class LotusBreadcrumb extends React.PureComponent<LotusBreadcrumbProps, any> {
   };
 
   conversionFromLocation = (location, breadcrumbNameMap) => {
-    const {
-      breadcrumbSeparator,
-      home,
-      itemRender,
-      linkElement = 'a'
-    } = this.props;
+    const { breadcrumbSeparator, home, itemRender, linkElement = 'a' } = this.props;
 
     const pathSnippets = urlToList(location.pathname);
     // Loop data mosaic routing
@@ -73,11 +68,8 @@ class LotusBreadcrumb extends React.PureComponent<LotusBreadcrumbProps, any> {
       if (currentBreadcrumb.inherited) {
         return null;
       }
-      const isLinkable =
-        index !== pathSnippets.length - 1 && currentBreadcrumb.component;
-      const name = itemRender
-        ? itemRender(currentBreadcrumb)
-        : currentBreadcrumb.name;
+      const isLinkable = index !== pathSnippets.length - 1 && currentBreadcrumb.component;
+      const name = itemRender ? itemRender(currentBreadcrumb) : currentBreadcrumb.name;
       return currentBreadcrumb.name && !currentBreadcrumb.hideInBreadcrumb ? (
         <Breadcrumb.Item key={url}>
           {React.createElement(
@@ -95,7 +87,7 @@ class LotusBreadcrumb extends React.PureComponent<LotusBreadcrumbProps, any> {
         {React.createElement(
           linkElement as any,
           {
-            [linkElement === 'a' ? 'href' : 'to']: '/'
+            [linkElement === 'a' ? 'href' : 'to']: '/',
           },
           home || 'Home'
         )}
@@ -118,16 +110,13 @@ class LotusBreadcrumb extends React.PureComponent<LotusBreadcrumbProps, any> {
       routes,
       params,
       breadcrumbNameMap,
-      location
+      location,
     } = this.props;
 
     if (breadcrumbList && breadcrumbList.length) {
       return (
-        <Breadcrumb
-          className={styles.breadcrumb}
-          separator={breadcrumbSeparator}
-        >
-          {breadcrumbList.map((item) => {
+        <Breadcrumb className={styles.breadcrumb} separator={breadcrumbSeparator}>
+          {breadcrumbList.map(item => {
             const title = itemRender ? itemRender(item) : item.title;
             return (
               <Breadcrumb.Item>
@@ -135,7 +124,7 @@ class LotusBreadcrumb extends React.PureComponent<LotusBreadcrumbProps, any> {
                   ? React.createElement(
                       linkElement as any,
                       {
-                        [linkElement === 'a' ? 'href' : 'to']: item.href
+                        [linkElement === 'a' ? 'href' : 'to']: item.href,
                       },
                       title
                     )
@@ -152,7 +141,7 @@ class LotusBreadcrumb extends React.PureComponent<LotusBreadcrumbProps, any> {
       return (
         <Breadcrumb
           className={styles.breadcrumb}
-          routes={routes.filter((route) => route.breadcrumbName)}
+          routes={routes.filter(route => route.breadcrumbName)}
           params={params}
           itemRender={this.itemRender}
           separator={breadcrumbSeparator}

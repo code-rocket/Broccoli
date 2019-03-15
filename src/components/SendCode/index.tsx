@@ -34,14 +34,14 @@ class SendCode extends React.Component<SendCodeProps, State> {
     second: 60,
     initText: '获取短信验证码',
     runText: '{%s}秒后重新获取',
-    resetText: '重新获取验证码'
+    resetText: '重新获取验证码',
   };
 
   readonly state: State = {
     buttonText: this.props.initText,
     runSecond: this.props.second,
     lastSecond: 0,
-    start: false
+    start: false,
   };
 
   componentWillUnmount() {
@@ -49,7 +49,7 @@ class SendCode extends React.Component<SendCodeProps, State> {
   }
 
   // 按钮点击回调
-  handleClick = (event) => {
+  handleClick = event => {
     event.preventDefault();
     const { onGetCaptcha } = this.props;
     const result = onGetCaptcha ? onGetCaptcha() : null;
@@ -66,7 +66,7 @@ class SendCode extends React.Component<SendCodeProps, State> {
   // 开始倒计时函数
   start() {
     this.setState({
-      start: true
+      start: true,
     });
     this.timer = setInterval(() => {
       const { lastSecond, runSecond } = this.state;
@@ -74,7 +74,7 @@ class SendCode extends React.Component<SendCodeProps, State> {
 
       this.setState({
         buttonText: this.getButtonText(second),
-        runSecond: runSecond - 1
+        runSecond: runSecond - 1,
       });
       second <= 0 && this.timeout();
     }, 1000);
@@ -85,7 +85,7 @@ class SendCode extends React.Component<SendCodeProps, State> {
     const { resetText, onEnd } = this.props;
     this.setState({
       buttonText: resetText,
-      start: false
+      start: false,
     });
     onEnd && onEnd();
     // 清除定时器
@@ -102,15 +102,7 @@ class SendCode extends React.Component<SendCodeProps, State> {
   };
 
   render() {
-    const {
-      second,
-      initText,
-      resetText,
-      runText,
-      onGetCaptcha,
-      onEnd,
-      ...rest
-    } = this.props;
+    const { second, initText, resetText, runText, onGetCaptcha, onEnd, ...rest } = this.props;
     const { buttonText, start } = this.state;
 
     return (

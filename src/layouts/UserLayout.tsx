@@ -17,11 +17,11 @@ class UserLayout extends React.PureComponent {
     return (
       <div className={styles.container}>
         <div className={styles.lang}>
-          <SelectLang/>
+          <SelectLang />
         </div>
 
         <div className={styles.content}>{children}</div>
-        <GlobalFooter copyright={copyright}/>
+        <GlobalFooter copyright={copyright} />
       </div>
     );
   }

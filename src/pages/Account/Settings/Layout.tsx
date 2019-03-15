@@ -20,30 +20,17 @@ interface State {
 const { Item } = Menu;
 
 const menuMap = {
-  base: (
-    <FormattedMessage
-      id="app.settings.menuMap.basic"
-      defaultMessage="Basic Settings"
-    />
-  ),
+  base: <FormattedMessage id="app.settings.menuMap.basic" defaultMessage="Basic Settings" />,
   security: (
-    <FormattedMessage
-      id="app.settings.menuMap.security"
-      defaultMessage="Security Settings"
-    />
+    <FormattedMessage id="app.settings.menuMap.security" defaultMessage="Security Settings" />
   ),
-  binding: (
-    <FormattedMessage
-      id="app.settings.menuMap.binding"
-      defaultMessage="Account Binding"
-    />
-  ),
+  binding: <FormattedMessage id="app.settings.menuMap.binding" defaultMessage="Account Binding" />,
   notification: (
     <FormattedMessage
       id="app.settings.menuMap.notification"
       defaultMessage="New Message Notification"
     />
-  )
+  ),
 };
 
 class SettingsLayout extends Component<SettingsLayoutProps, State> {
@@ -51,32 +38,30 @@ class SettingsLayout extends Component<SettingsLayoutProps, State> {
 
   readonly state: State = {
     mode: 'inline',
-    selectKey: 'base'
+    selectKey: 'base',
   };
 
   componentDidMount() {
     const {
       location: { pathname },
-      match
+      match,
     } = this.props;
 
     const key = pathname.replace(`${match.path}/`, '');
 
     this.setState({
-      selectKey: menuMap[key] ? key : 'base'
+      selectKey: menuMap[key] ? key : 'base',
     });
   }
 
   getMenu = () => {
-    return Object.keys(menuMap).map((item) => (
-      <Item key={item}>{menuMap[item]}</Item>
-    ));
+    return Object.keys(menuMap).map(item => <Item key={item}>{menuMap[item]}</Item>);
   };
 
   selectKey = ({ key }) => {
     router.push(`/account/settings/${key}`);
     this.setState({
-      selectKey: key
+      selectKey: key,
     });
   };
 
@@ -93,16 +78,12 @@ class SettingsLayout extends Component<SettingsLayoutProps, State> {
       <GridContent>
         <div
           className={styles.main}
-          ref={(ref) => {
+          ref={ref => {
             this.main = ref;
           }}
         >
           <div className={styles.leftMenu}>
-            <Menu
-              mode={mode}
-              selectedKeys={[selectKey]}
-              onClick={this.selectKey}
-            >
+            <Menu mode={mode} selectedKeys={[selectKey]} onClick={this.selectKey}>
               {this.getMenu()}
             </Menu>
           </div>

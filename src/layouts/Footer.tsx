@@ -7,8 +7,7 @@ const { Footer } = Layout;
 
 export const copyright = (
   <React.Fragment>
-    Copyright <Icon type="copyright" /> 2018{' '}
-    {`${PROJECT_DEFAULT_CONFIG.companyName} 技术出品`}
+    Copyright <Icon type="copyright" /> 2018 {`${PROJECT_DEFAULT_CONFIG.companyName} 技术出品`}
   </React.Fragment>
 );
 

@@ -2,12 +2,12 @@
 export const AXIOS_DEFAULT_CONFIG = {
   timeout: 20000,
   withCredentials: true,
-  baseURL: '/'
+  baseURL: '/',
 };
 
 // 项目相关配置
 export const PROJECT_DEFAULT_CONFIG = {
-  companyName: 'Broccoli spring( gcx )'
+  companyName: 'Broccoli spring( gcx )',
 };
 
 // 项目默认设置
@@ -17,5 +17,5 @@ export const SETTING_DEFAULT_CONFIG = {
   contentWidth: 'Fluid',
   fixedHeader: false,
   autoHideHeader: false,
-  fixSideBar: false
+  fixSideBar: false,
 };

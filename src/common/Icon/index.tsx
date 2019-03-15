@@ -11,7 +11,7 @@ export interface IconProps {
 }
 
 class Icon extends React.Component<IconProps, any> {
-  handleClick = (event) => {
+  handleClick = event => {
     const { onClick } = this.props;
 
     onClick && onClick(event);

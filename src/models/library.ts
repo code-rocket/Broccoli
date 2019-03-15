@@ -5,8 +5,8 @@ export default {
   namespace: 'library',
 
   state: {
-    articleStore: JSON.parse(sessionStorage.getItem('articleStore')) || [],//文章仓库
-    maxStock: 10,//最大库存数量
+    articleStore: JSON.parse(sessionStorage.getItem('articleStore')) || [], //文章仓库
+    maxStock: 10, //最大库存数量
   },
 
   effects: {
@@ -18,10 +18,10 @@ export default {
      * @param {any} select
      * @returns {IterableIterator<any>}
      */
-    * getLibraryData({ payload }, { call, put, select }) {
+    *getLibraryData({ payload }, { call, put, select }) {
       console.info('%c Library - 知识库-数据获取及处理开始', 'color: #2480ff;');
-      let { articleStore } = yield select(state => state.library);//article store list
-      const filterArticle = articleStore.filter(art => art[payload.libkey]);//filter article list we want
+      let { articleStore } = yield select(state => state.library); //article store list
+      const filterArticle = articleStore.filter(art => art[payload.libkey]); //filter article list we want
       //库存中存在文章
       if (filterArticle && filterArticle.length > 0) {
         console.info('%c ========== 当前文章是 ===========', 'color: #71ff9c;');
@@ -30,7 +30,7 @@ export default {
         yield put({
           type: 'saveLibraryData',
           payload: {
-            instock: true,//库存中有
+            instock: true, //库存中有
             libkey: payload.libkey,
           },
         });
@@ -46,7 +46,7 @@ export default {
           yield put({
             type: 'saveLibraryData',
             payload: {
-              instock: false,//库存中没有
+              instock: false, //库存中没有
               articleContent: articleContent,
               libkey: payload.libkey,
             },
@@ -69,9 +69,10 @@ export default {
        * 库存中没有 => 合并库存 => 控制库存总量（截取库存)
        * 库存中有 => 直接后去原库存 => 控制库存总量（截取库存)
        */
-      const newStore = (!payload.instock ?
-        [...state.articleStore, ...[{ [payload.libkey]: payload.articleContent }]]
-        : state.articleStore).slice(-state.maxStock);
+      const newStore = (!payload.instock
+        ? [...state.articleStore, ...[{ [payload.libkey]: payload.articleContent }]]
+        : state.articleStore
+      ).slice(-state.maxStock);
       sessionStorage.setItem('articleStore', JSON.stringify(newStore));
       //store data
       return {

@@ -14,7 +14,6 @@ import RightContent, { GlobalHeaderRightProps } from './RightContent';
 import TopMenu from '../TopMenu/index';
 import styles from './index.less';
 
-
 export interface GlobalHeaderProps extends GlobalHeaderRightProps {
   logo: string;
   isMobile: boolean;
@@ -37,29 +36,19 @@ class GlobalHeader extends React.PureComponent<GlobalHeaderProps, any> {
   };
 
   render() {
-    const {
-      collapsed,
-      isMobile,
-      logo,
-      currentUser,
-      notices,
-      noticeIcon,
-      onMenuClick,
-    } = this.props;
+    const { collapsed, isMobile, logo, currentUser, notices, noticeIcon, onMenuClick } = this.props;
     return (
       <div className={styles.header}>
         {isMobile && (
           <Link to="/" className={styles.logo} key="logo">
-            <img src={logo} alt="logo" width="32"/>
+            <img src={logo} alt="logo" width="32" />
           </Link>
         )}
         <span className={styles.trigger} onClick={this.toggle}>
-          <Icon type={collapsed ? 'menu-unfold' : 'menu-fold'}/>
+          <Icon type={collapsed ? 'menu-unfold' : 'menu-fold'} />
         </span>
 
-
-        <TopMenu></TopMenu>
-
+        <TopMenu />
 
         <RightContent
           currentUser={currentUser}

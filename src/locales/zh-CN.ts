@@ -13,5 +13,5 @@ export default {
   ...login,
   ...settings,
   ...exception,
-  ...globalHeader
+  ...globalHeader,
 };

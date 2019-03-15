@@ -17,7 +17,7 @@ class GlobalFooter extends React.Component<GlobalFooterProps, any> {
       <div className={cls}>
         {links && (
           <div className={styles.links}>
-            {links.map((link) => (
+            {links.map(link => (
               <a
                 key={link.key}
                 title={link.key}

@@ -20,13 +20,13 @@ interface State {
 
 class SideMenu extends React.PureComponent<SideMenuProps, State> {
   readonly state: State = {
-    openKeys: getDefaultCollapsedSubMenus(this.props)
+    openKeys: getDefaultCollapsedSubMenus(this.props),
   };
 
   //
-  isMainMenu = (key) => {
+  isMainMenu = key => {
     const { menuData } = this.props;
-    return menuData.some((item) => {
+    return menuData.some(item => {
       if (key) {
         return item.key === key || item.path === key;
       }
@@ -35,11 +35,10 @@ class SideMenu extends React.PureComponent<SideMenuProps, State> {
   };
 
   // 菜单打开的回调
-  handleOpenChange = (openKeys) => {
-    const moreThanOne =
-      openKeys.filter((openKey) => this.isMainMenu(openKey)).length > 1;
+  handleOpenChange = openKeys => {
+    const moreThanOne = openKeys.filter(openKey => this.isMainMenu(openKey)).length > 1;
     this.setState({
-      openKeys: moreThanOne ? [openKeys.pop()] : [...openKeys]
+      openKeys: moreThanOne ? [openKeys.pop()] : [...openKeys],
     });
   };
 
@@ -58,7 +57,7 @@ class SideMenu extends React.PureComponent<SideMenuProps, State> {
         width={256}
         className={ClassNames(styles.sideMenu, {
           [styles.fixSideBar]: fixSideBar,
-          [styles.light]: theme === 'light'
+          [styles.light]: theme === 'light',
         })}
       >
         <React.Suspense fallback={<PageLoading />}>

@@ -1,4 +1,4 @@
-export const recombinate = (route)=>{
+export const recombinate = route => {
   return {
     tab: route.meta.zh,
     key: route.name,
@@ -11,4 +11,4 @@ export const recombinate = (route)=>{
     route: route,
     parentRoute: route,
   };
-}
+};
