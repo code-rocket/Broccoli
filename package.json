@@ -82,7 +82,7 @@
       "git add"
     ],
     "**/*.{js,jsx}": "npm run lint-staged:js",
-    "**/*.less": "stylelint --syntax less"
+    "**/*.{less,scss,sass}": "stylelint --syntax less"
   },
   "engines": {
     "node": ">=8.0.0"
