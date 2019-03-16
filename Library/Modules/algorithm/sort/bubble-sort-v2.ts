@@ -1,4 +1,5 @@
-module.exports = '## 冒泡排序优化\n' +
+module.exports =
+  '## 冒泡排序优化\n' +
   '代码优化:  \n' +
   '\n' +
   '*  在某些时候，循环还未终止，整个数组已经排好序，此时应及时终止循环。（冒泡每次都会比较相邻两个数并交换次序不对的组，若一次循环后，都没进行交换，则已经完成排序）。  \n' +
@@ -21,7 +22,7 @@ module.exports = '## 冒泡排序优化\n' +
   '            arr[b] = temp;\n' +
   '        }\n' +
   '\n' +
-  '        console.time(\'冒泡排序耗时\');\n' +
+  "        console.time('冒泡排序耗时');\n" +
   '        //依次将最大的数放置到数组末尾，将第二大的数放到倒数第二位...\n' +
   '        let isFinish;\n' +
   '        for (let i = 0; i < arr.length; i++) {\n' +
@@ -46,7 +47,7 @@ module.exports = '## 冒泡排序优化\n' +
   '                break;\n' +
   '            }\n' +
   '        }\n' +
-  '        console.timeEnd(\'冒泡排序耗时\');\n' +
+  "        console.timeEnd('冒泡排序耗时');\n" +
   '        return arr;\n' +
   '    };\n' +
   '```\n';

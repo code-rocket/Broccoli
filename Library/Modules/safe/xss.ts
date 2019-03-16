@@ -1,4 +1,5 @@
-module.exports = '### 一、XSS跨站攻击\n' +
+module.exports =
+  '### 一、XSS跨站攻击\n' +
   'XSS 全称“跨站脚本”，是注入攻击的一种。其特点是**`不对服务器端造成任何伤害`**，而是通过一些正常的站内交互途径，例如:  发布评论，提交含有JavaScript 的内容文本。这时服务器端如果没有过滤或转义掉这些脚本，作为内容发布到了页面上，其他用户访问这个页面的时候就会运行这些脚本。\n' +
   '\n' +
   '运行预期之外的脚本带来的后果有很多中，可能只是简单的恶作剧——一个关不掉的窗口： \n' +
@@ -17,9 +18,9 @@ module.exports = '### 一、XSS跨站攻击\n' +
   '\n' +
   'import bottle\n' +
   'app = bottle.Bottle()\n' +
-  'plugin = bottle.ext.sqlite.Plugin(dbfile=\'/var/db/myxss.sqlite\')\n' +
+  "plugin = bottle.ext.sqlite.Plugin(dbfile='/var/db/myxss.sqlite')\n" +
   'app.install(plugin)\n' +
-  '@app.route(\'/myxss/\')\n' +
+  "@app.route('/myxss/')\n" +
   'def show(cookies, db):\n' +
   '    SQL = \'INSERT INTO "myxss" ("cookies") VALUES (?)\'\n' +
   '    try:\n' +

@@ -1,4 +1,5 @@
-module.exports = '## 选择排序\n' +
+module.exports =
+  '## 选择排序\n' +
   '从数组中找到最小的元素，和第一个位置的元素互换。\n' +
   '从第二个位置开始，找到最小的元素，和第二个位置的元素互换。\n' +
   '.......  \n' +
@@ -13,7 +14,7 @@ module.exports = '## 选择排序\n' +
   '     * @returns {*}\n' +
   '     */\n' +
   '    let selectionSort = (arr) => {\n' +
-  '        console.time(\'选择排序耗时\');\n' +
+  "        console.time('选择排序耗时');\n" +
   '        for (let i = 0; i < arr.length - 1; i++) {\n' +
   '            let minPos = i;\n' +
   '            for (let j = i + 1; j < arr.length; j++) {\n' +
@@ -32,7 +33,7 @@ module.exports = '## 选择排序\n' +
   '            arr[b] = temp;\n' +
   '        }\n' +
   '\n' +
-  '        console.timeEnd(\'选择排序耗时\');\n' +
+  "        console.timeEnd('选择排序耗时');\n" +
   '        return arr;\n' +
   '    };\n' +
   '```\n' +
@@ -44,7 +45,7 @@ module.exports = '## 选择排序\n' +
   '     * @returns {*}\n' +
   '     */\n' +
   '    let selectionSort2 = (arr) => {\n' +
-  '        console.time(\'选择排序耗时\');\n' +
+  "        console.time('选择排序耗时');\n" +
   '        for (let i = 0; i <= arr.length / 2 - 1; i++) {\n' +
   '            let minPos = i, maxPos = arr.length - i - 1;\n' +
   '            for (let j = i; j < arr.length - i; j++) {\n' +
@@ -74,7 +75,7 @@ module.exports = '## 选择排序\n' +
   '            arr[b] = temp;\n' +
   '        }\n' +
   '\n' +
-  '        console.timeEnd(\'选择排序耗时\');\n' +
+  "        console.timeEnd('选择排序耗时');\n" +
   '        return arr;\n' +
   '    };\n' +
   '```\n';

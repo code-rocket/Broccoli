@@ -1,4 +1,5 @@
-module.exports = '## 冒泡排序\n' +
+module.exports =
+  '## 冒泡排序\n' +
   '从前往后，依次比较相邻的两个数，把较大的数放到后面。一次循环，可以在当前最末尾位置得到一个当前最大值\n' +
   '\n' +
   '#### 冒泡排序示例：\n' +
@@ -16,7 +17,7 @@ module.exports = '## 冒泡排序\n' +
   '            arr[b] = temp;\n' +
   '        }\n' +
   '\n' +
-  '        console.time(\'冒泡排序耗时\');\n' +
+  "        console.time('冒泡排序耗时');\n" +
   '        //依次将最大的数放置到数组末尾，将第二大的数放到倒数第二位...\n' +
   '        let isFinish;\n' +
   '        for (let i = 0; i < arr.length; i++) {\n' +
@@ -31,7 +32,7 @@ module.exports = '## 冒泡排序\n' +
   '                break;\n' +
   '            }\n' +
   '        }\n' +
-  '        console.timeEnd(\'冒泡排序耗时\');\n' +
+  "        console.timeEnd('冒泡排序耗时');\n" +
   '        return arr;\n' +
   '    };\n' +
   '```\n';

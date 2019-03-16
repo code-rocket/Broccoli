@@ -1,4 +1,5 @@
-module.exports = '## 2.0 Released Now! 🎉🎉🎉\n' +
+module.exports =
+  '## 2.0 Released Now! 🎉🎉🎉\n' +
   '[Announcing Ant Design Pro 2.0.0](https://medium.com/ant-design/beautiful-and-powerful-ant-design-pro-2-0-release-51358da5af95)\n' +
   '\n' +
   '## Translation Recruitment :loudspeaker:\n' +
@@ -17,8 +18,8 @@ module.exports = '## 2.0 Released Now! 🎉🎉🎉\n' +
   '  <div id="content"></div>\n' +
   '  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>\n' +
   '  <script>\n' +
-  '    document.getElementById(\'content\').innerHTML =\n' +
-  '      marked(\'# Marked in the browser\\n\\nRendered by **marked**.\');\n' +
+  "    document.getElementById('content').innerHTML =\n" +
+  "      marked('# Marked in the browser\\n\\nRendered by **marked**.');\n" +
   '  </script>\n' +
   '</body>\n' +
   '</html>\n' +

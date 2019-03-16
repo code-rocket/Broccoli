@@ -1,4 +1,5 @@
-module.exports = '### 1、使用Websocket协议  \n' +
+module.exports =
+  '### 1、使用Websocket协议  \n' +
   '全双工(full-duplex)通信自然可以实现多个标签页之间的通信  \n' +
   '### 2、通过Localstorage\n' +
   'LocalStorage对象在修订过的HTML5规范中作为持久保存在客户端数据的方案取代了globalStorage，它是浏览器多个标签共用的存储空间，所以可以用来实现多标签之间的通信。  \n' +
