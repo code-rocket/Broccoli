@@ -14,10 +14,17 @@ const prettierConfigPath = require.resolve('../.prettierrc');
 let didError = false;
 
 let files = [];
+
 const jsFiles = glob.sync('src/**/*.js*', { ignore: ['**/node_modules/**', 'build/**'] });
+const scriptsFiles = glob.sync('scripts/**/*.js*', { ignore: ['**/node_modules/**', 'build/**'] });
+
 const tsFiles = glob.sync('src/**/*.ts*', { ignore: ['**/node_modules/**', 'build/**'] });
-files = files.concat(jsFiles);
-files = files.concat(tsFiles);
+const configFiles = glob.sync('config/**/*.ts*', { ignore: ['**/node_modules/**', 'build/**'] });
+const LibraryFiles = glob.sync('Library/**/*.ts*', { ignore: ['**/node_modules/**', 'build/**'] });
+
+files = files.concat(jsFiles, scriptsFiles);
+files = files.concat(tsFiles, configFiles, LibraryFiles);
+
 if (!files.length) {
   return;
 }
