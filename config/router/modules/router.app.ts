@@ -1,4 +1,4 @@
-import {router_library} from './router.library';
+import { router_library } from './router.library';
 import router_test from './router.test';
 
 export default [
@@ -162,7 +162,6 @@ export default [
       },
       ...router_test,
       ...router_library,
-
     ],
   },
 ];

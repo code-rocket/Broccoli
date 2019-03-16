@@ -17,6 +17,12 @@ export default [
         en: 'about js',
         routes: [{ name: 'pureFunction', zh: '纯函数', en: 'pure function', icon: 'android' }],
       },
+      {
+        name: 'package',
+        zh: 'package 相关',
+        en: 'about package',
+        routes: [{ name: 'yarn', zh: 'yarn', en: 'yarn', icon: 'android' }],
+      },
       { name: 'browserCommunicate', zh: '浏览器标签页通信', en: 'browser communicate' },
     ],
   },

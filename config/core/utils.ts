@@ -30,10 +30,12 @@ export const judgeType = function(value: any) {
 export const filterParams = (obj: object): void => {
   for (let key in obj) {
     //Valuable
-    if (!(obj[key] === 0 || obj[key] === false || obj[key]) || obj[key].toString().replace(/(^\s*)|(\s*$)/g, '') === '') {
+    if (
+      !(obj[key] === 0 || obj[key] === false || obj[key]) ||
+      obj[key].toString().replace(/(^\s*)|(\s*$)/g, '') === ''
+    ) {
       delete obj[key];
-    }
-    else {
+    } else {
       //obj
       if (judgeType(obj[key]) === 'object') {
         filterParams(obj[key]);

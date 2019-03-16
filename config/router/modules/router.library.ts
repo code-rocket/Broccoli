@@ -1,12 +1,14 @@
 import { getRouterMap } from '../../core/distribute';
 import core_interviewMap from '../../core/modules/core.library';
 
-export const routerMap = getRouterMap(core_interviewMap, 'library');//处理好的路由队列
+export const routerMap = getRouterMap(core_interviewMap, 'library'); //处理好的路由队列
 
 export const router_library = [
   //markdown edit
   {
-    name: 'MD', icon: 'dashboard', path: '/MD',
+    name: 'MD',
+    icon: 'dashboard',
+    path: '/MD',
     meta: {
       class: 'library',
       key: 'MD',
@@ -16,7 +18,9 @@ export const router_library = [
     },
     routes: [
       {
-        path: '/MD/MDEdit', name: 'MDEdit', component: './MDEditor/index',
+        path: '/MD/MDEdit',
+        name: 'MDEdit',
+        component: './MDEditor/index',
         meta: {
           class: 'library',
           key: 'MDEdit',
@@ -29,7 +33,6 @@ export const router_library = [
   },
   ...routerMap,
 ];
-
 
 // {
 //   name: 'algorithm',
