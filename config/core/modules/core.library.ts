@@ -34,6 +34,13 @@ export default [
     routes: [{ name: 'xss', zh: 'XSS跨站攻击', en: 'xss attack' }],
   },
   {
+    name: 'http',
+    icon: 'user',
+    zh: '关于http',
+    en: 'about http',
+    routes: [{ name: 'http2.0', zh: 'http2.0', en: 'http2.0' }],
+  },
+  {
     name: 'algorithm',
     icon: 'user',
     zh: '算法',
