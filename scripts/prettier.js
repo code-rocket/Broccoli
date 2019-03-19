@@ -21,9 +21,10 @@ const scriptsFiles = glob.sync('scripts/**/*.js*', { ignore: ['**/node_modules/*
 const tsFiles = glob.sync('src/**/*.ts*', { ignore: ['**/node_modules/**', 'build/**'] });
 const configFiles = glob.sync('config/**/*.ts*', { ignore: ['**/node_modules/**', 'build/**'] });
 const LibraryFiles = glob.sync('Library/**/*.ts*', { ignore: ['**/node_modules/**', 'build/**'] });
+const mockFiles = glob.sync('mock/**/*.ts*', { ignore: ['**/node_modules/**', 'build/**'] });
 
 files = files.concat(jsFiles, scriptsFiles);
-files = files.concat(tsFiles, configFiles, LibraryFiles);
+files = files.concat(tsFiles, configFiles, LibraryFiles, mockFiles);
 
 if (!files.length) {
   return;
