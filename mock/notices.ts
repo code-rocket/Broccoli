@@ -98,7 +98,7 @@ const getNotices = (req, res) =>
         type: 'event',
       },
     ],
-    message: 'success'
+    message: 'success',
   });
 
 export default {

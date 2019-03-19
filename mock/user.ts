@@ -18,7 +18,7 @@ function getCurrentUser(req, res) {
         { key: '5', label: '海纳百川' },
       ],
     },
-    message: 'success'
+    message: 'success',
   });
   res.status(200).end();
 }
@@ -30,18 +30,18 @@ function login(req, res) {
     res.json({
       status: 200,
       data: {
-        token: `${username}_token`
+        token: `${username}_token`,
       },
-      message: 'success'
+      message: 'success',
     });
     res.status(200).end();
   } else {
     res.json({
       status: 10401,
       data: {
-        token: ''
+        token: '',
       },
-      message: '用户不存在'
+      message: '用户不存在',
     });
     res.status(401).end();
   }
@@ -50,7 +50,7 @@ function login(req, res) {
 function logout(req, res) {
   res.json({
     status: 200,
-    message: 'success'
+    message: 'success',
   });
   res.status(200).end();
 }
@@ -58,5 +58,5 @@ function logout(req, res) {
 export default {
   'GET /user/current': getCurrentUser,
   'POST /user/login': login,
-  'GET /user/logout': logout
+  'GET /user/logout': logout,
 };
