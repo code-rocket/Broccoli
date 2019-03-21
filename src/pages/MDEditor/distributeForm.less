@@ -1,0 +1,30 @@
+.library-distribute-form {
+  padding: 24px;
+  background: #fbfbfb;
+  border: 1px solid #d9d9d9;
+  border-radius: 6px;
+  .gcx {
+    color: rebeccapurple;
+  }
+  :global(.ant-form-item) {
+    display: flex;
+    margin-bottom: 15px;
+
+    &:global(.ant-form-item-with-help) {
+      margin-bottom: 0;
+    }
+  }
+
+  :global(.ant-form-item-control-wrapper) {
+    flex: 1;
+    :global(i.dynamic-delete-button) {
+      position: absolute;
+      line-height: 40px;
+      margin-left: 8px;
+    }
+    :global(.ant-form-explain) {
+      font-size: 12px;
+      min-height: 12px;
+    }
+  }
+}
