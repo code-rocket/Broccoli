@@ -7,3 +7,7 @@ export function libraryGetServices(data) {
 export function libraryStoreServices(data) {
   return POST('/libary/interview/store', data);
 }
+
+export function libraryFileExists(data) {
+  return POST('/libary/interview/isexists', data);
+}
