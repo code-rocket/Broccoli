@@ -34,16 +34,29 @@ export default [
     routes: [{ name: 'clearfloat', zh: '清除浮动', en: 'clearfloat' }],
   },
   {
-    name: 'JS',
+    name: 'js',
     icon: 'user',
     zh: 'JS',
     en: 'JS',
     routes: [
       {
-        name: 'es6',
-        zh: 'es6',
-        en: 'es6',
-        routes: [{ name: 'Promise', zh: 'Promise方法', en: 'Promise fn' }],
+        name: 'object',
+        zh: 'JS对象',
+        en: 'js object',
+        routes: [{ name: 'objhasproperty', zh: '对象是否含有属性', en: 'obj has property' }],
+      },
+    ],
+  },
+  {
+    name: 'es6',
+    icon: 'user',
+    zh: 'ECMAScript 6',
+    en: 'ECMAScript 6',
+    routes: [
+      {
+        name: 'promise',
+        zh: 'Promise方法',
+        en: 'Promise fn',
       },
     ],
   },
