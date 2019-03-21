@@ -21,10 +21,18 @@
       position: absolute;
       line-height: 40px;
       margin-left: 8px;
+      color: #f5222d;
     }
     :global(.ant-form-explain) {
       font-size: 12px;
       min-height: 12px;
+    }
+  }
+  @media (max-width: 575px) {
+    :global(.ant-form-item-label) {
+      line-height: 40px;
+      width: auto;
+      margin-right: 5px;
     }
   }
 }

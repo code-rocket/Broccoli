@@ -15,6 +15,8 @@ let didError = false;
 
 let files = [];
 
+const lessFiles = glob.sync('src/**/*.less', { ignore: ['**/node_modules/**', 'build/**'] });
+
 const jsFiles = glob.sync('src/**/*.js*', { ignore: ['**/node_modules/**', 'build/**'] });
 const scriptsFiles = glob.sync('scripts/**/*.js*', { ignore: ['**/node_modules/**', 'build/**'] });
 
@@ -23,7 +25,7 @@ const configFiles = glob.sync('config/**/*.ts*', { ignore: ['**/node_modules/**'
 const LibraryFiles = glob.sync('Library/**/*.ts*', { ignore: ['**/node_modules/**', 'build/**'] });
 const mockFiles = glob.sync('mock/**/*.ts*', { ignore: ['**/node_modules/**', 'build/**'] });
 
-files = files.concat(jsFiles, scriptsFiles);
+files = files.concat(lessFiles, jsFiles, scriptsFiles);
 files = files.concat(tsFiles, configFiles, LibraryFiles, mockFiles);
 
 if (!files.length) {
