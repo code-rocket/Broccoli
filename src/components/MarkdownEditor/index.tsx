@@ -1,36 +1,45 @@
 import React, { Component } from 'react';
 import Editor from 'for-editor';
+import { connect } from 'dva';
+import { markdownEditorProps } from '@/types/markdownEditor';
 
-interface MarkdownEditorProps {
-  value: string;
-}
-
-class MarkdownEditor extends Component<MarkdownEditorProps, any> {
-  constructor() {
-    super();
-    this.state = {
-      value: '',
-    };
+@connect(({ markdownEditor }) => ({
+  contentText: markdownEditor.contentText,
+}))
+class MarkdownEditor extends Component<markdownEditorProps> {
+  componentDidMount() {
+    this.props.onRef(this);
   }
 
-  handleSave(value) {
-    console.log(value);
-    console.log(this.state.value);
+  /**
+   * Editor save
+   */
+  handleSave() {
+    const { contentText } = this.props;
+    console.log('Editor save ' + contentText);
+    this.props.handleSave();
   }
 
+  /**
+   * Editor change
+   * @param value
+   */
   handleChange(value) {
-    this.setState({
-      value,
+    const { dispatch } = this.props;
+    console.log('Editor change ' + value);
+    dispatch({
+      type: 'markdownEditor/setContentText',
+      payload: value,
     });
   }
 
   render() {
-    const { value } = this.state;
+    const { contentText } = this.props;
     return (
       <Editor
         placeholder={'请输入内容'}
         lineNum={true}
-        value={value}
+        value={contentText}
         onChange={this.handleChange.bind(this)}
         onSave={this.handleSave.bind(this)}
       />
