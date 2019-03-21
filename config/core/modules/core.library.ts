@@ -27,6 +27,27 @@ export default [
     ],
   },
   {
+    name: 'css',
+    icon: 'user',
+    zh: '关于css',
+    en: 'about css',
+    routes: [{ name: 'clearfloat', zh: '清除浮动', en: 'clearfloat' }],
+  },
+  {
+    name: 'JS',
+    icon: 'user',
+    zh: 'JS',
+    en: 'JS',
+    routes: [
+      {
+        name: 'es6',
+        zh: 'es6',
+        en: 'es6',
+        routes: [{ name: 'Promise', zh: 'Promise方法', en: 'Promise fn' }],
+      },
+    ],
+  },
+  {
     name: 'safe',
     icon: 'user',
     zh: '安全',
@@ -55,20 +76,6 @@ export default [
           { name: 'bubble-sort-v1', zh: '冒泡排序', en: 'bubble sort v1', icon: 'apple' },
           { name: 'bubble-sort-v2', zh: '冒泡排序优化', en: 'bubble sort v2', icon: 'windows' },
         ],
-      },
-    ],
-  },
-  {
-    name: 'JS',
-    icon: 'user',
-    zh: 'JS',
-    en: 'JS',
-    routes: [
-      {
-        name: 'es6',
-        zh: 'es6',
-        en: 'es6',
-        routes: [{ name: 'Promise', zh: 'Promise方法', en: 'Promise fn' }],
       },
     ],
   },
