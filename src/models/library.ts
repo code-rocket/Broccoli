@@ -1,4 +1,8 @@
-import { libraryServices } from '@/services/library.service';
+import {
+  libraryGetServices,
+  libraryStoreServices,
+  libraryFileExists,
+} from '@/services/library.service';
 import { libraryModelProps } from '@/types/library';
 
 export default {
@@ -38,7 +42,7 @@ export default {
       //库存中不存在文章
       else {
         console.info('%c ========== 库存中不存在文章 ===========', 'color:#FF4148;');
-        const response = yield call(libraryServices, payload);
+        const response = yield call(libraryGetServices, payload);
         if (response && response.code === 200) {
           const articleContent = response.data;
           console.info('%c ========== 当前文章是 ===========', 'color: #71ff9c;');
@@ -54,14 +58,33 @@ export default {
         }
       }
     },
+
+    /**
+     * store library article - 存储文章至图书馆
+     * @param {any} payload
+     * @param {any} callback
+     * @param {any} call
+     * @param {any} put
+     * @param {any} select
+     * @returns {IterableIterator<any>}
+     */
+    *storeLibraryArticle({ payload, callback }, { call, put, select }) {
+      const response = yield call(libraryStoreServices, payload);
+      callback(response.data); // 返
+    },
+
+    *islibraryFileExists({ payload, callback }, { call }) {
+      const response = yield call(libraryFileExists, payload);
+      callback(response.data); // 返
+    },
   },
 
   reducers: {
     /**
      * save data 存储获取的数据
-     * @param state
+     * @param {libraryModelProps} state
      * @param {any} payload
-     * @returns {{articleContent: any; articleStore: any}}
+     * @returns {{articleStore: Array<object>; maxStock: number; instock?: boolean; libkey?: string}}
      */
     saveLibraryData(state: libraryModelProps, { payload }) {
       console.info('%c Library - 知识库-数据存储开始', 'color:#2480ff;');
