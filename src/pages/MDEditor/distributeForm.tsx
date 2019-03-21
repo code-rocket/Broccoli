@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Row, Col, Input, Icon } from 'antd';
+import { Form, Row, Col, Input, Icon, Modal } from 'antd';
 import { connect } from 'dva';
 import { Component } from '@/components/BaseComponent';
 import styles from './distributeForm.less';
@@ -105,7 +105,12 @@ class DistributeForm extends Component<DistributeFormProps> {
                 console.log(err);
               });
           } else if (type === 'check') {
-            this.props.handleCheck(e, values);
+            this.props.handleCheck(e, values).then(isExists => {
+              Modal.info({
+                title: '检查搜索结果',
+                content: isExists ? '已存在该文件' : '不存在该文件',
+              });
+            });
           }
         }
       }
@@ -125,9 +130,9 @@ class DistributeForm extends Component<DistributeFormProps> {
     const { getFieldDecorator, getFieldValue } = this.props.form;
     getFieldDecorator('keys', { initialValue: [] });
     const keys = getFieldValue('keys');
-
+    const col = { lg: 8, md: 12, sm: 12, xs: 24 };
     const formItems = keys.map((k, index) => (
-      <Col span={5} key={index} style={{ marginRight: index + 1 === keys.length ? '16px' : null }}>
+      <Col {...col} key={index} style={{ paddingRight: '22px' }}>
         <Form.Item label={`路径 ${index + 1}`} key={k} hasFeedback>
           {getFieldDecorator(`path-${index + 1}`, {
             validateTrigger: ['onChange', 'onBlur'],
@@ -154,7 +159,7 @@ class DistributeForm extends Component<DistributeFormProps> {
       <Form className={styles['library-distribute-form']} onSubmit={this.handleSubmit}>
         <Row gutter={16}>
           {formItems}
-          <Col span={6}>
+          <Col {...col} style={{ paddingRight: '22px' }}>
             <Form.Item label={'文件名'} hasFeedback>
               {getFieldDecorator('filename', {
                 validateTrigger: ['onChange', 'onBlur'],
