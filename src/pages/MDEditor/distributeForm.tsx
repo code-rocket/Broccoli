@@ -7,6 +7,7 @@ import styles from './distributeForm.less';
 interface DistributeFormProps {
   fileExt: Array<string>;
   handleSave: Function; //外部传入的提交保存事件
+  handleCheck: Function; //外部传入的提交保存事件
 }
 
 connect(({ markdownEditor }) => ({
@@ -86,14 +87,26 @@ class DistributeForm extends Component<DistributeFormProps> {
   /**
    * form submit
    * @param e
+   * @param {string} type
    */
-  handleSubmit = e => {
+  handleSubmit = (e, type: string = 'submit') => {
     this.props.form.validateFields(
       (err: any, values: object): void => {
         if (!err) {
           console.log('Received values of form: ', values);
-          //handle save data - Merge editor data and submit it to background
-          this.props.handleSave(e, values);
+          if (type === 'submit') {
+            //handle save data - Merge editor data and submit it to background
+            this.props
+              .handleCheck(e, values)
+              .then(() => {
+                this.props.handleSave(e, values);
+              })
+              .catch(err => {
+                console.log(err);
+              });
+          } else if (type === 'check') {
+            this.props.handleCheck(e, values);
+          }
         }
       }
     );
