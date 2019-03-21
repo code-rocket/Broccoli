@@ -14,7 +14,7 @@ const DistributeFormModule = Form.create({ name: 'distribute_form' })(Distribute
 }))
 class MDEditorPage extends Component<markdownEditorProps, any> {
   state = {
-    modalType: 'info',
+    isExists: true,
   };
 
   componentDidMount() {
@@ -42,7 +42,7 @@ class MDEditorPage extends Component<markdownEditorProps, any> {
           }
         },
       });
-    }).catch(() => console.log('Oops errors!'));
+    }).catch(() => console.log('error'));
   };
 
   /**
@@ -52,11 +52,37 @@ class MDEditorPage extends Component<markdownEditorProps, any> {
    */
   handleSave = (e, value): void => {
     e.preventDefault();
-    Modal[this.state.modalType]({
+    Modal.confirm({
       title: '确定要提交吗',
-      content: '确定要提交吗',
+      content: this.state.isExists ? '已存在该文件，确认覆盖吗' : null,
       onOk: () => this.modalHandleOK(value),
       onCancel() {},
+    });
+  };
+
+  /**
+   * handle check - 检查library 图书馆中是否存在同路径同名的文件
+   * @param e
+   * @param value
+   * @returns {Promise<any>}
+   */
+  handleCheck = (e, value) => {
+    e.preventDefault();
+    return new Promise((resolve, reject) => {
+      try {
+        this.props.dispatch({
+          type: 'library/islibraryFileExists',
+          payload: value,
+          callback: res => {
+            this.setState({
+              isExists: res,
+            });
+            resolve(this.state.isExists);
+          },
+        });
+      } catch (e) {
+        reject(e);
+      }
     });
   };
 
@@ -94,15 +120,23 @@ class MDEditorPage extends Component<markdownEditorProps, any> {
             >
               submit
             </Button>
+            <Button
+              style={{ marginLeft: 8 }}
+              type="primary"
+              onClick={() => this['child_form'].handleSubmit(event, 'check')}
+            >
+              check
+            </Button>
           </Col>
         </Row>
         <DistributeFormModule
           wrappedComponentRef={form => (this['child_form'] = form)}
           handleSave={this.handleSave}
+          handleCheck={this.handleCheck}
         />
         <MarkdownEditor
           onRef={ref => (this.child_editor = ref)}
-          handleSave={this.handleSave.bind(this)}
+          handleSave={() => this['child_form'].handleSubmit(event)}
         />
       </div>
     );
