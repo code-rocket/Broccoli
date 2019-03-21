@@ -2,7 +2,7 @@
   "name": "Broccoli",
   "author": "Broccoli spring( gcx ) <Lensgcx@163.com>",
   "version": "2.1.1",
-  "description": "new frontend project for my library and interview",
+  "description": "Broccoli - My interview knowledge project，react + dva + umi + antd + typescript",
   "private": true,
   "scripts": {
     "start": "cross-env APP_TYPE=site umi dev",
