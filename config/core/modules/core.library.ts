@@ -76,7 +76,7 @@ export default [
         name: 'vue-router',
         zh: 'vue-router',
         en: 'vue-router',
-        routes: [],
+        routes: [{ name: 'mode', zh: '路由模式区别', en: 'router-mode' }],
       },
       {
         name: 'directive',
