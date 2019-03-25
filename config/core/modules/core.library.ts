@@ -61,6 +61,32 @@ export default [
     ],
   },
   {
+    name: 'vue',
+    icon: 'user',
+    zh: 'Vue 相关',
+    en: 'about vue',
+    routes: [
+      {
+        name: 'axios',
+        zh: 'axios 相关',
+        en: 'about axios',
+        routes: [{ name: 'axiosdifference', zh: 'axios和同类区别', en: 'obj has property' }],
+      },
+      {
+        name: 'vue-router',
+        zh: 'vue-router',
+        en: 'vue-router',
+        routes: [],
+      },
+      {
+        name: 'directive',
+        zh: '指令',
+        en: 'directive',
+        routes: [{ name: 'v-el', zh: '指令v-el', en: 'v-el' }],
+      },
+    ],
+  },
+  {
     name: 'safe',
     icon: 'user',
     zh: '安全',
