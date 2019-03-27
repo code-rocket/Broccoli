@@ -15,18 +15,19 @@ let didError = false;
 
 let files = [];
 
-const lessFiles = glob.sync('src/**/*.less', { ignore: ['**/node_modules/**', 'build/**'] });
+const config = [
+  'src/**/*.ts*',
+  'config/**/*.ts*',
+  'Library/**/*.ts*',
+  'mock/**/*.ts*',
+  'src/**/*.less',
+  'scripts/**/*.js*',
+];
 
-const jsFiles = glob.sync('src/**/*.js*', { ignore: ['**/node_modules/**', 'build/**'] });
-const scriptsFiles = glob.sync('scripts/**/*.js*', { ignore: ['**/node_modules/**', 'build/**'] });
-
-const tsFiles = glob.sync('src/**/*.ts*', { ignore: ['**/node_modules/**', 'build/**'] });
-const configFiles = glob.sync('config/**/*.ts*', { ignore: ['**/node_modules/**', 'build/**'] });
-const LibraryFiles = glob.sync('Library/**/*.ts*', { ignore: ['**/node_modules/**', 'build/**'] });
-const mockFiles = glob.sync('mock/**/*.ts*', { ignore: ['**/node_modules/**', 'build/**'] });
-
-files = files.concat(lessFiles, jsFiles, scriptsFiles);
-files = files.concat(tsFiles, configFiles, LibraryFiles, mockFiles);
+config.forEach(path => {
+  const f = glob.sync(path, { ignore: ['**/node_modules/**', 'build/**'] });
+  files = files.concat(f);
+});
 
 if (!files.length) {
   return;
