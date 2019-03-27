@@ -94,6 +94,20 @@ export default [
     routes: [{ name: 'xss', zh: 'XSS跨站攻击', en: 'xss attack' }],
   },
   {
+    name: 'engineering',
+    icon: 'user',
+    zh: '工程化',
+    en: 'engineering',
+    routes: [
+      {
+        name: 'stylelint',
+        zh: 'css 审查',
+        en: 'stylelint',
+        routes: [{ name: 'stylelint-issues', zh: '问题', en: 'stylelint-issues' }],
+      },
+    ],
+  },
+  {
     name: 'http',
     icon: 'user',
     zh: '关于http',
