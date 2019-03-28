@@ -45,6 +45,15 @@ export default [
         en: 'js object',
         routes: [{ name: 'objhasproperty', zh: '对象是否含有属性', en: 'obj has property' }],
       },
+      {
+        name: 'data-objects',
+        zh: '数据类型',
+        en: 'data objects',
+        routes: [
+          { name: 'kindsOfDataObjects', zh: '介绍JS数据类型', en: 'kinds of data objects' },
+          { name: 'basic-reference', zh: '基本类型和引用类型', en: 'basic and reference' },
+        ],
+      },
     ],
   },
   {
