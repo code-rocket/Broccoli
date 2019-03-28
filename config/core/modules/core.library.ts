@@ -105,6 +105,12 @@ export default [
         en: 'stylelint',
         routes: [{ name: 'stylelint-issues', zh: '问题', en: 'stylelint-issues' }],
       },
+      {
+        name: 'prod-package',
+        zh: '打包',
+        en: 'prod-package',
+        routes: [{ name: 'prod-package-issues', zh: '打包问题', en: 'prod-package-issues' }],
+      },
     ],
   },
   {
