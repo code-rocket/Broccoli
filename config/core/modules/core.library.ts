@@ -76,6 +76,18 @@ export default [
     en: 'about vue',
     routes: [
       {
+        name: 'global-API',
+        zh: '全局 API',
+        en: 'global API',
+        routes: [{ name: 'delete', zh: 'vue.delete 使用', en: 'vue.delete' }],
+      },
+      {
+        name: 'directive',
+        zh: '指令',
+        en: 'directive',
+        routes: [{ name: 'v-el', zh: '指令v-el', en: 'v-el' }],
+      },
+      {
         name: 'axios',
         zh: 'axios 相关',
         en: 'about axios',
@@ -86,12 +98,6 @@ export default [
         zh: 'vue-router',
         en: 'vue-router',
         routes: [{ name: 'mode', zh: '路由模式区别', en: 'router-mode' }],
-      },
-      {
-        name: 'directive',
-        zh: '指令',
-        en: 'directive',
-        routes: [{ name: 'v-el', zh: '指令v-el', en: 'v-el' }],
       },
     ],
   },
