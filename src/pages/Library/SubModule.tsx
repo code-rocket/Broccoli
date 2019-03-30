@@ -1,5 +1,6 @@
 import React from 'react';
-import { Card } from 'antd';
+import { Card, Icon } from 'antd';
+import { Link } from 'react-router-dom';
 import { Component } from '@/components/BaseComponent';
 import CodeBlock from '@/components/CodeBlock';
 import { moduleInfoProps, libraryModelProps } from '@/types/library';
@@ -52,6 +53,18 @@ class SubModule extends Component<SubModuleProps> {
     }
   };
 
+  /**
+   * card content edit - jump to '/MD/MDEdit' markdown editor
+   */
+  cardEdit() {
+    const { dispatch, articleStore, moduleInfo } = this.props;
+    const article = this.handleArticle(articleStore, moduleInfo);
+    dispatch({
+      type: 'markdownEditor/setContentText',
+      payload: article,
+    });
+  }
+
   render() {
     const { libraryLoading, articleStore, moduleInfo } = this.props;
     const article = this.handleArticle(articleStore, moduleInfo);
@@ -59,7 +72,12 @@ class SubModule extends Component<SubModuleProps> {
       <Card
         title={moduleInfo.zh || 'Default Card Title'}
         loading={libraryLoading}
-        extra={<a href="#">Edit</a>}
+        extra={
+          <Link to={{ pathname: '/MD/MDEdit', state: 123 }} onClick={this.cardEdit.bind(this)}>
+            <Icon type="edit" style={{ margin: '0 5px' }} />
+            <span>{'Edit'}</span>
+          </Link>
+        }
         style={{ marginTop: 16 }}
       >
         <CodeBlock content={article} />
