@@ -1,6 +1,7 @@
 import React from 'react';
 import { Modal, Row, Col, Form, Button, Icon } from 'antd';
 import { connect } from 'dva';
+import history from 'history/createBrowserHistory';
 import { Component } from '@/components/BaseComponent';
 import { markdownEditorProps } from '@/types/markdownEditor';
 
@@ -19,6 +20,7 @@ class MDEditorPage extends Component<markdownEditorProps, any> {
 
   componentDidMount() {
     console.log('MarkdownEditor - componentDidMount !!!!');
+    console.log(history);
   }
 
   /**
@@ -95,7 +97,11 @@ class MDEditorPage extends Component<markdownEditorProps, any> {
         </a>
         <Row>
           <Col span={24}>
-            <Button onClick={() => this['child_form'].add()}>
+            <Button onClick={() => window.history.back()}>
+              <Icon type="rollback" />
+              返回
+            </Button>
+            <Button style={{ marginLeft: 8 }} onClick={() => this['child_form'].add()}>
               <Icon type="plus-circle" />
               Add
             </Button>
