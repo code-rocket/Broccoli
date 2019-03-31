@@ -1,30 +1,29 @@
 import React from 'react';
 import { Form, Row, Col, Input, Icon, Modal } from 'antd';
-import { connect } from 'dva';
 import { Component } from '@/components/BaseComponent';
+import { markdownEditorProps } from '@/types/markdownEditor';
 import styles from './distributeForm.less';
 
-interface DistributeFormProps {
-  fileExt: Array<string>;
+interface DistributeFormProps extends markdownEditorProps {
   handleSave: Function; //外部传入的提交保存事件
   handleCheck: Function; //外部传入的提交保存事件
 }
 
-connect(({ markdownEditor }) => ({
-  contentText: markdownEditor.contentText,
-}));
-
 let id = 0;
 
-class DistributeForm extends Component<DistributeFormProps> {
-  state = {
-    fileExt: ['md'], //文件名称- 合法后缀
-  };
+class DistributeForm extends Component<DistributeFormProps, any> {
+  constructor(props) {
+    super(props);
+    this.state = {
+      depth: props.contentInfo.depth || 1, //路径的层级（不包括最后一级文件名 ）
+    };
+  }
 
   componentDidMount() {
     console.log('distributeForm - componentDidMount !!!!');
+
     // this.props.onRef(this);
-    this.initFormField(1);
+    this.initFormField(this.state.depth);
   }
 
   validateFilename = (rule, value, callback) => {
@@ -32,7 +31,9 @@ class DistributeForm extends Component<DistributeFormProps> {
       callback('请输入文件名称');
     } else {
       const FileExt = value.replace(/.+\./, '');
-      if (!this.state.fileExt.some(e => e === FileExt)) {
+
+      //judge Whether this file format is to allow
+      if (!this.props.fileExt.some(e => e === FileExt)) {
         callback('请输入正确后缀的文件名称');
       }
       callback();
@@ -127,6 +128,7 @@ class DistributeForm extends Component<DistributeFormProps> {
   };
 
   render() {
+    const { pathPrefix, contentInfo } = this.props;
     const { getFieldDecorator, getFieldValue } = this.props.form;
     getFieldDecorator('keys', { initialValue: [] });
     const keys = getFieldValue('keys');
@@ -134,7 +136,8 @@ class DistributeForm extends Component<DistributeFormProps> {
     const formItems = keys.map((k, index) => (
       <Col {...col} key={index} style={{ paddingRight: '22px' }}>
         <Form.Item label={`路径 ${index + 1}`} key={k} hasFeedback>
-          {getFieldDecorator(`path-${index + 1}`, {
+          {getFieldDecorator(`${pathPrefix}${index + 1}`, {
+            initialValue: contentInfo[`${pathPrefix}${index + 1}`],
             validateTrigger: ['onChange', 'onBlur'],
             rules: [
               {
@@ -162,6 +165,7 @@ class DistributeForm extends Component<DistributeFormProps> {
           <Col {...col} style={{ paddingRight: '22px' }}>
             <Form.Item label={'文件名'} hasFeedback>
               {getFieldDecorator('filename', {
+                initialValue: contentInfo[`filename`],
                 validateTrigger: ['onChange', 'onBlur'],
                 rules: [
                   {
