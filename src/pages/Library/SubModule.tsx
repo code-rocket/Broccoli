@@ -59,6 +59,13 @@ class SubModule extends Component<SubModuleProps> {
   cardEdit() {
     const { dispatch, articleStore, moduleInfo } = this.props;
     const article = this.handleArticle(articleStore, moduleInfo);
+
+    // //set content information from markdown edit
+    dispatch({
+      type: 'markdownEditor/setContentInfo',
+      payload: moduleInfo,
+    });
+    //set content text from markdown edit
     dispatch({
       type: 'markdownEditor/setContentText',
       payload: article,
@@ -68,12 +75,16 @@ class SubModule extends Component<SubModuleProps> {
   render() {
     const { libraryLoading, articleStore, moduleInfo } = this.props;
     const article = this.handleArticle(articleStore, moduleInfo);
+
     return (
       <Card
         title={moduleInfo.zh || 'Default Card Title'}
         loading={libraryLoading}
         extra={
-          <Link to={{ pathname: '/MD/MDEdit', state: 123 }} onClick={this.cardEdit.bind(this)}>
+          <Link
+            to={{ pathname: '/MD/MDEdit', state: { a: 1 }, search: '?some=search-string' }}
+            onClick={this.cardEdit.bind(this)}
+          >
             <Icon type="edit" style={{ margin: '0 5px' }} />
             <span>{'Edit'}</span>
           </Link>
