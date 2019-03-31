@@ -1,26 +1,39 @@
 import React from 'react';
-import { Modal, Row, Col, Form, Button, Icon } from 'antd';
+import { Modal, Row, Col, Button, Icon } from 'antd';
 import { connect } from 'dva';
-import history from 'history/createBrowserHistory';
+import { createForm } from 'rc-form';
 import { Component } from '@/components/BaseComponent';
 import { markdownEditorProps } from '@/types/markdownEditor';
 
 import MarkdownEditor from '@/components/MarkdownEditor';
 import DistributeForm from './distributeForm';
 
-const DistributeFormModule = Form.create({ name: 'distribute_form' })(DistributeForm);
+const DistributeFormModule = connect(state => {
+  return {
+    fileExt: state.markdownEditor.fileExt,
+    pathPrefix: state.markdownEditor.pathPrefix,
+    contentInfo: state.markdownEditor.contentInfo,
+  };
+})(
+  createForm({
+    name: 'distribute_form',
+  })(DistributeForm)
+);
 
 @connect(({ markdownEditor }) => ({
   contentText: markdownEditor.contentText,
 }))
 class MDEditorPage extends Component<markdownEditorProps, any> {
-  state = {
-    isExists: true,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      isExists: true,
+    };
+  }
 
   componentDidMount() {
     console.log('MarkdownEditor - componentDidMount !!!!');
-    console.log(history);
+    // console.log(this.props.location);
   }
 
   /**
@@ -69,6 +82,8 @@ class MDEditorPage extends Component<markdownEditorProps, any> {
    * @returns {Promise<any>}
    */
   handleCheck = (e, value) => {
+    console.log('check123131');
+    console.log(value);
     e.preventDefault();
     return new Promise((resolve, reject) => {
       try {
@@ -135,11 +150,13 @@ class MDEditorPage extends Component<markdownEditorProps, any> {
             </Button>
           </Col>
         </Row>
+
         <DistributeFormModule
           wrappedComponentRef={form => (this['child_form'] = form)}
           handleSave={this.handleSave}
           handleCheck={this.handleCheck}
         />
+
         <MarkdownEditor
           onRef={ref => (this.child_editor = ref)}
           handleSave={() => this['child_form'].handleSubmit(event)}
