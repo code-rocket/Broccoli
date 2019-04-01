@@ -31,7 +31,10 @@ export default [
     icon: 'user',
     zh: '关于css',
     en: 'about css',
-    routes: [{ name: 'clearfloat', zh: '清除浮动', en: 'clearfloat' }],
+    routes: [
+      { name: 'clearfloat', zh: '清除浮动', en: 'clearfloat' },
+      { name: 'BFC', zh: '块级格式化上下文', en: 'BFC' },
+    ],
   },
   {
     name: 'js',
