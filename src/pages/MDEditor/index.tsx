@@ -4,9 +4,10 @@ import { connect } from 'dva';
 import { createForm } from 'rc-form';
 import { Component } from '@/components/BaseComponent';
 import { markdownEditorProps } from '@/types/markdownEditor';
-
+import { locationType } from '@/types/location';
 import MarkdownEditor from '@/components/MarkdownEditor';
 import DistributeForm from './distributeForm';
+import { splitFileName } from '../../utils/utils';
 
 const DistributeFormModule = connect(state => {
   return {
@@ -20,10 +21,14 @@ const DistributeFormModule = connect(state => {
   })(DistributeForm)
 );
 
+interface MDEditorPageProps extends markdownEditorProps {
+  location: locationType;
+}
+
 @connect(({ markdownEditor }) => ({
   contentText: markdownEditor.contentText,
 }))
-class MDEditorPage extends Component<markdownEditorProps, any> {
+class MDEditorPage extends Component<MDEditorPageProps, any> {
   constructor(props) {
     super(props);
     this.state = {
@@ -33,7 +38,8 @@ class MDEditorPage extends Component<markdownEditorProps, any> {
 
   componentDidMount() {
     console.log('MarkdownEditor - componentDidMount !!!!');
-    // console.log(this.props.location);
+    console.log(this.props.location);
+    console.log(splitFileName('gcx12312312.js.md'));
   }
 
   /**
@@ -43,12 +49,17 @@ class MDEditorPage extends Component<markdownEditorProps, any> {
    */
   modalHandleOK = value => {
     return new Promise((resolve, reject) => {
-      const { dispatch, contentText } = this.props;
+      const { dispatch, contentText, location } = this.props;
+      const libkey = location.state ? location.state.libkey : splitFileName(value.filename);
+      console.log(33333333333333);
+      console.log(libkey);
+      console.log(value);
       dispatch({
         type: 'library/storeLibraryArticle',
         payload: {
           contentText: contentText,
           pathObj: value,
+          libkey: libkey,
         },
         callback: res => {
           if (res) {
@@ -94,6 +105,12 @@ class MDEditorPage extends Component<markdownEditorProps, any> {
             this.setState({
               isExists: res,
             });
+            // if (res) {
+            //   Modal.error({
+            //     title: '警告',
+            //     content: '该路径/文件已经存在'
+            //   });
+            // }
             resolve(this.state.isExists);
           },
         });
