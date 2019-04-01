@@ -82,7 +82,11 @@ class SubModule extends Component<SubModuleProps> {
         loading={libraryLoading}
         extra={
           <Link
-            to={{ pathname: '/MD/MDEdit', state: { a: 1 }, search: '?some=search-string' }}
+            to={{
+              pathname: '/MD/MDEdit',
+              state: { libkey: moduleInfo.key },
+              search: '?some=search-string',
+            }}
             onClick={this.cardEdit.bind(this)}
           >
             <Icon type="edit" style={{ margin: '0 5px' }} />
