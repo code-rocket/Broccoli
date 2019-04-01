@@ -49,3 +49,17 @@ export const filterParams = (obj: object): void => {
     }
   }
 };
+
+/**
+ *split file name - 截取文件名不带后缀
+ * @param {string} text
+ * @returns {string}
+ */
+export const splitFileName = (text: string) => {
+  const pattern = /\.{1}[a-z]{1,}$/;
+  if (pattern.exec(text) !== null) {
+    return text.slice(0, pattern.exec(text).index);
+  } else {
+    return text;
+  }
+};
