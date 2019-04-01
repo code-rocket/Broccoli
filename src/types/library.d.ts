@@ -11,6 +11,6 @@ export interface moduleInfoProps extends routeKeyType {
 export interface libraryModelProps {
   articleStore: Array<object>; //文章仓库
   maxStock: number; //最大库存数量
-  instock?: boolean; //库存中没有
   libkey?: string; //文章字段
+  articleContent?: string; //文章内容
 }
