@@ -136,7 +136,17 @@ export default [
     icon: 'user',
     zh: '关于http',
     en: 'about http',
-    routes: [{ name: 'http2.0', zh: 'http2.0', en: 'http2.0' }],
+    routes: [
+      { name: 'http2.0', zh: 'http2.0', en: 'http2.0' },
+      {
+        name: 'tcp',
+        zh: 'tcp',
+        en: 'tcp',
+        routes: [
+          { name: 'http-tcp-question', zh: 'http和tcp之间的问题', en: 'http and tcp question' },
+        ],
+      },
+    ],
   },
   {
     name: 'algorithm',
